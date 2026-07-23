@@ -1,0 +1,15 @@
+{
+  "schema_version": 3,
+  "site_id": "sit_01ks2arkx6endsn2dxx310ge9r",
+  "site_host": "xiluluke.com",
+  "created_at": 1784813679,
+  "managed_globs": [
+    "content/**",
+    "data/jant.toml",
+    "themes/jant/**",
+    "hugo.toml",
+    ".gitignore",
+    "README.md",
+    ".jant-sync"
+  ]
+}
