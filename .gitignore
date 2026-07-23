@@ -2,6 +2,7 @@
 public/
 resources/
 .hugo_build.lock
+.preview-public/
 
 # OS
 .DS_Store
