@@ -1,0 +1,41 @@
+{{ define "main" }}
+  {{- $slug := .Params.slug | default .Slug -}}
+  {{- if eq $slug "seedraft" -}}
+    {{ partial "seedraft-hub.html" . }}
+  {{- else -}}
+    {{- $format := .Params.format | default "note" -}}
+    {{- $media := .Params.media | default slice -}}
+    {{- $collections := .Params.collections | default slice -}}
+    {{- $replies := .Pages.ByDate -}}
+    <article class="editorial-article">
+      <header>
+        {{- if eq $format "quote" }}
+          <p class="editorial-kicker">Quote · 摘录</p>
+          <h1>{{ .Params.quote_text | default .Title }}</h1>
+        {{- else }}
+          <h1>{{ .Title }}</h1>
+        {{- end }}
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
+      </header>
+      {{- with .Params.link_url }}
+        <a class="article-external" href="{{ . }}" target="_blank" rel="noopener noreferrer">访问相关网站 ↗</a>
+      {{- end }}
+      <div class="editorial-article-body">
+        {{ .Content }}
+      </div>
+      {{ partial "media-gallery.html" (dict "media" $media "permalink" .RelPermalink) }}
+      {{- if $collections }}
+      <footer class="article-taxonomy">
+        <span>Filed under</span>
+        {{- range $collections }}<a href="{{ printf "/%s/" .slug | relURL }}">{{ .title }}</a>{{- end }}
+      </footer>
+      {{- end }}
+      {{- if $replies }}
+      <section class="article-replies" aria-label="后续更新">
+        <p class="editorial-kicker">Thread · 后续更新</p>
+        {{- range $replies }}{{ partial "reply.html" . }}{{- end }}
+      </section>
+      {{- end }}
+    </article>
+  {{- end -}}
+{{ end }}

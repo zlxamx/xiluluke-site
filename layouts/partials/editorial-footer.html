@@ -1,0 +1,49 @@
+{{- $contact := hugo.Data.luxi.contact -}}
+<footer class="editorial-footer" id="contact">
+  <div class="editorial-wrap contact-panel">
+    <p class="editorial-kicker">Contact · 联系我</p>
+    <h2>如果你对我的工作感兴趣，<br>欢迎通过以下方式联系我。</h2>
+    <div class="contact-actions" aria-label="联系方式">
+      <button type="button" class="contact-action" data-copy-wechat="{{ $contact.wechat }}" aria-label="复制微信号 {{ $contact.wechat }}">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M12.2 6.4c-5.1 0-9.2 3.4-9.2 7.7 0 2.4 1.3 4.6 3.5 6l-.9 3.1 3.6-1.8c1 .3 2 .5 3 .5h.6a7.7 7.7 0 0 1-.5-2.7c0-4.5 4.2-8.2 9.5-8.2h.7c-1.5-2.7-5.3-4.6-10.3-4.6Z"/>
+          <path d="M29 19.2c0-3.7-3.5-6.8-7.8-6.8s-7.8 3-7.8 6.8 3.5 6.8 7.8 6.8c.9 0 1.8-.1 2.7-.4l3 1.5-.7-2.6c1.7-1.3 2.8-3.2 2.8-5.3Z"/>
+          <circle cx="9.2" cy="13.2" r="1.1"/><circle cx="15.3" cy="13.2" r="1.1"/>
+          <circle cx="18.7" cy="18.4" r="1"/><circle cx="24" cy="18.4" r="1"/>
+        </svg>
+        <span>微信</span>
+      </button>
+      <a class="contact-action" href="mailto:{{ $contact.email }}" aria-label="发送邮件到 {{ $contact.email }}">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="4" y="7" width="24" height="18" rx="2"/>
+          <path d="m5.5 9 10.5 8 10.5-8"/>
+        </svg>
+        <span>邮件</span>
+      </a>
+      <a class="contact-action" href="{{ $contact.github }}" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 3.5a12.6 12.6 0 0 0-4 24.6c.6.1.9-.3.9-.6v-2.4c-3.5.8-4.3-1.5-4.3-1.5-.6-1.5-1.4-1.9-1.4-1.9-1.2-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.1 2 2.9 1.4 3.6 1.1.1-.8.4-1.4.8-1.8-2.8-.3-5.8-1.4-5.8-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.6.1-3.3 0 0 1.1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.4-1.6 3.5-1.3 3.5-1.3.7 1.7.3 3 .1 3.3.8.9 1.3 2 1.3 3.4 0 4.8-2.9 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.6c0 .4.2.7.9.6A12.6 12.6 0 0 0 16 3.5Z"/>
+        </svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+    <p class="wechat-line" data-wechat-line>微信搜索：{{ $contact.wechat }}</p>
+  </div>
+  <div class="editorial-wrap footer-bottom">
+    <p>Built with · Jant 内容系统与定制 Hugo 主题</p>
+    <p>© {{ now.Year }} 希路路克 · Designed in magazine style</p>
+  </div>
+  <script>
+    document.querySelectorAll("[data-copy-wechat]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var id = button.getAttribute("data-copy-wechat");
+        if (navigator.clipboard) navigator.clipboard.writeText(id);
+        var line = document.querySelector("[data-wechat-line]");
+        if (line) {
+          line.textContent = "微信号已复制：" + id;
+          window.setTimeout(function () { line.textContent = "微信搜索：" + id; }, 2200);
+        }
+      });
+    });
+  </script>
+</footer>

@@ -1,6 +1,6 @@
 baseURL = "https://xiluluke.com/"
 title = "LuxiBlog"
-languageCode = "zh-hans"
+locale = "zh-Hans"
 defaultContentLanguage = "zh-hans"
 theme = "jant"
 paginate = 50

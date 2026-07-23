@@ -1,237 +1,95 @@
-{{- $allPosts := where .Site.Pages "Type" "post" -}}
-{{- $publicPosts := where $allPosts "Params.visibility" "public" -}}
-{{- $publicPosts = $publicPosts.ByDate.Reverse -}}
-{{- $featuredPosts := where $publicPosts "Params.featured_at" "ne" nil -}}
-{{- $featuredPosts = $featuredPosts.ByDate.Reverse -}}
-{{- $lead := index $featuredPosts 0 -}}
-{{- $recent := first 5 $publicPosts -}}
-{{- $latest := index $publicPosts 0 -}}
-{{- $weeklyCount := 0 -}}
-{{- range hugo.Data.jant.directory -}}
-  {{- if eq .slug "weekly" -}}{{- $weeklyCount = .entry_count -}}{{- end -}}
-{{- end -}}
-<!doctype html>
-<html lang="zh-Hans">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fbfcf8">
-  <title>希路路克 · 正在做的，正在想的</title>
-  <meta name="description" content="希路路克的个人站点：写生活与思考，也用 AI 做产品。正在构建文芽 Seedraft。">
-  <link rel="canonical" href="{{ .Permalink }}">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="希路路克 · 正在做的，正在想的">
-  <meta property="og:description" content="记录生活与思考，用 AI 辅助创作与开发。">
-  <meta property="og:url" content="{{ .Permalink }}">
-  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
-  <link rel="stylesheet" href="{{ "luxiblog-home.css" | relURL }}">
-</head>
-<body>
-  <header class="site-header">
-    <div class="wrap nav">
-      <a class="logo" href="#top">LuxiBlog <span>希路路克</span></a>
-      <nav class="links" aria-label="主要导航">
-        <a href="#stream">文章</a>
-        <a href="#projects">作品</a>
-        <a href="#services">服务</a>
-        <a href="#taste">品味</a>
-        <a href="{{ "about/" | relURL }}">关于</a>
-      </nav>
+{{ define "main" }}
+  {{- $allPosts := where .Site.Pages "Type" "post" -}}
+  {{- $publicPosts := where $allPosts "Params.visibility" "public" -}}
+  {{- $publicPosts = $publicPosts.ByDate.Reverse -}}
+  {{- $featuredPosts := where $publicPosts "Params.featured_at" "ne" nil -}}
+  {{- $featuredPosts = $featuredPosts.ByDate.Reverse -}}
+  {{- $lead := index $featuredPosts 0 -}}
+  {{- $recent := first 5 $publicPosts -}}
+  {{- $latest := index $publicPosts 0 -}}
+  {{- $oldest := index $publicPosts (sub (len $publicPosts) 1) -}}
+  {{- $writingDays := add (div (sub now.Unix $oldest.Date.Unix) 86400) 1 -}}
+  {{- $projects := hugo.Data.luxi.projects -}}
+  {{- $services := hugo.Data.luxi.services -}}
+
+  <section class="home-hero editorial-wrap">
+    <div class="home-volume"><span>VOL.{{ now.Format "06.01" }}</span><span>{{ now.Format "2006.01" }}</span></div>
+    <h1>希路路克</h1>
+    <p class="home-tagline">正在做的，正在想的</p>
+    <div class="home-status">
+      <div><span>LAST UPDATED</span><b>{{ $latest.Date.Format "01.02" }}</b></div>
+      <div><span>NOW FOCUSED</span><b><a href="{{ "seedraft/" | relURL }}">文芽 Seedraft ↗</a></b></div>
+      <div><span>CUMULATIVE</span><b>{{ len $publicPosts }} articles</b></div>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-    <section class="wrap hero">
-      <div class="eyebrow">VOL. {{ now.Format "06.01" }} · PERSONAL JOURNAL</div>
-      <h1>希路路克</h1>
-      <p class="hero-lead">正在做的，正在想的。</p>
-      <div class="status-row">
+  <section class="home-feature">
+    <div class="editorial-wrap">
+      <p class="editorial-kicker">Featured · 头条</p>
+      <article>
         <div>
-          <span class="status-label">Last updated</span>
-          <span class="status-value">{{ $latest.Date.Format "01.02" }}</span>
+          <h2><a href="{{ $lead.RelPermalink }}">{{ $lead.Title }}</a></h2>
+          <p>{{ $lead.Params.summary_text | plainify | truncate 190 }}</p>
+          <footer><time>{{ $lead.Date.Format "2006 / 01 / 02" }}</time><a href="{{ $lead.RelPermalink }}">继续阅读 →</a></footer>
         </div>
-        <div>
-          <span class="status-label">Now focused</span>
-          <span class="status-value"><a href="#projects">文芽 Seedraft ↗</a></span>
-        </div>
-        <div>
-          <span class="status-label">Cumulative</span>
-          <span class="status-value">{{ len $publicPosts }} articles</span>
-        </div>
-      </div>
-    </section>
+        <a class="home-feature-image" href="{{ $lead.RelPermalink }}"><img src="{{ "images/feature-avatar.png" | relURL }}" alt="希路路克"></a>
+      </article>
+    </div>
+  </section>
 
-    <section class="feature-shell">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="section-title">Featured · 头条</div>
-          <a class="link" href="{{ "featured/" | relURL }}">查看精选 →</a>
-        </div>
-        <article class="featured">
-          <div class="featured-copy">
-            <h2><a href="{{ $lead.RelPermalink }}">{{ $lead.Title }}</a></h2>
-            <p>{{ $lead.Params.summary_text | plainify | truncate 180 }}</p>
-            <div class="feature-meta">
-              <time datetime="{{ $lead.Date.Format "2006-01-02" }}">{{ $lead.Date.Format "2006 / 01 / 02" }}</time>
-              <a href="{{ $lead.RelPermalink }}">继续阅读 →</a>
-            </div>
-          </div>
-          <a class="feature-visual" href="{{ $lead.RelPermalink }}" aria-label="阅读精选文章：{{ $lead.Title }}">
-            <img src="{{ "images/feature-avatar.png" | relURL }}" alt="希路路克：阅读、思考、运动与写作">
-          </a>
+  <section class="home-stream" id="stream">
+    <div class="editorial-wrap stream-layout">
+      <div class="stream-intro"><p class="editorial-kicker">Stream · 最近发布</p><h2>新近的<br>思考与记录</h2><p>按时间倒序。从一句话到一篇长文，都在这里。</p><a href="{{ "archive/" | relURL }}">查看全部 →</a></div>
+      <div class="stream-list">
+        {{- range $index, $post := $recent }}
+        <article>
+          <span>{{ printf "%02d" (add $index 1) }}</span>
+          <time>{{ $post.Date.Format "2006.01.02" }}</time>
+          <div><h3><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3><p>{{ $post.Params.summary_text | plainify | truncate 72 }}</p></div>
         </article>
+        {{- end }}
       </div>
-    </section>
-
-    <section class="archive" id="stream">
-      <div class="wrap">
-        <div class="archive-grid">
-          <div class="archive-intro">
-            <div class="section-title">Stream · 最近发布</div>
-            <h2>新近的<br>思考与记录</h2>
-            <p>按时间倒序。从一句话到一篇长文，都在这里。</p>
-            <a href="{{ "archive/" | relURL }}">查看全部 →</a>
-          </div>
-          <div class="stream">
-            {{- range $index, $post := $recent }}
-            <article class="stream-item">
-              <span class="index">{{ printf "%02d" (add $index 1) }}</span>
-              <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "2006.01.02" }}</time>
-              <div>
-                <h3><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
-                <p>{{ $post.Params.summary_text | plainify | truncate 58 }}</p>
-              </div>
-            </article>
-            {{- end }}
-          </div>
-        </div>
-
-        <div class="numbers-block">
-          <div class="section-title">By the numbers · 本站至今</div>
-          <div class="numbers">
-            <div class="number"><b>{{ len $publicPosts }}</b><span class="number-cn">文章</span><small>ARTICLES</small></div>
-            <div class="number"><b>{{ printf "%02d" $weeklyCount }}</b><span class="number-cn">周刊</span><small>ISSUES</small></div>
-            <div class="number"><b>02</b><span class="number-cn">作品</span><small>PROJECTS</small></div>
-            <div class="number"><b>2026</b><span class="number-cn">开始构建</span><small>BUILDING SINCE</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap projects" id="projects">
-      <div class="section-head">
-        <div class="section-title">Projects · 个人作品</div>
-        <a class="link" href="{{ "products/" | relURL }}">查看全部 →</a>
-      </div>
-      <div class="project-grid">
-        <article class="project project-primary">
-          <div class="project-status">Current · 当前主项目</div>
-          <h3>文芽 Seedraft</h3>
-          <p>给长篇连载创作者的 AI 写作工作台。AI 在后台完成生成、审计、整理与推进；创作者始终负责判断、批准与方向。</p>
-          <div class="project-loop">
-            <div><span>01</span>生成正文</div>
-            <div><span>02</span>正文审计</div>
-            <div><span>03</span>更新故事档案</div>
-            <div><span>04</span>生成下一章任务包</div>
-          </div>
-          <a href="https://seedraft.xiluluke.com/">了解文芽 ↗</a>
-        </article>
-        <article class="project">
-          <div class="project-status">Released · 已发布</div>
-          <h3>唯物辩证法问答</h3>
-          <p>围绕《矛盾论》《实践论》提问，获得一条基于辩证法的分析路径。</p>
-          <a href="https://dialectics.xiluluke.com/">体验应用 ↗</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="services-shell" id="services">
-      <div class="wrap services-layout">
-        <div class="services-intro">
-          <div class="section-title">Services · 对外服务</div>
-          <h2>能帮上<br>忙的</h2>
-          <p>围绕 AI 写作、产品原型与真实创作流程展开的合作。每项服务都来自我正在长期实践的工作。</p>
-        </div>
-        <div class="service-list">
-          <article class="service-item">
-            <span class="service-index">01</span>
-            <div>
-              <h3>AI 长篇写作工作流</h3>
-              <span class="service-for">For writers &amp; content teams</span>
-              <p>为连载作者与内容团队搭建角色档案、正文生成、质量审计、章节任务包和持续推进机制，让 AI 真正进入长期创作闭环。</p>
-              <a href="#about">咨询合作 →</a>
-            </div>
-          </article>
-          <article class="service-item">
-            <span class="service-index">02</span>
-            <div>
-              <h3>AI 产品原型共创</h3>
-              <span class="service-for">From idea to usable prototype</span>
-              <p>从一个明确的问题出发，梳理核心流程，快速做成可以被使用、观察和验证的网页或桌面产品原型。</p>
-              <a href="#about">发起项目 →</a>
-            </div>
-          </article>
-          <article class="service-item">
-            <span class="service-index">03</span>
-            <div>
-              <h3>Seedraft 早期共创计划</h3>
-              <span class="service-for">For serious long-form creators</span>
-              <p>与真实的小说作者和内容团队共同测试文芽，让产品在具体创作问题中持续完善，而不是停留在功能想象里。</p>
-              <a href="https://seedraft.xiluluke.com/">加入共创 →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="taste-shell" id="taste">
-      <div class="wrap taste-layout">
-        <div class="taste-intro">
-          <div class="section-title">Taste · 个人品味</div>
-          <h2>长期<br>关心的</h2>
-          <p>我反复阅读、实践和记录的主题。它们共同构成我理解生活与制作产品的方式。</p>
-        </div>
-        <div class="taste-list">
-          <article class="taste-item">
-            <span class="taste-index">01</span>
-            <div><h3>极简主义，不是少，而是有判断地留下</h3><p>从物品、身体与日常选择出发，记录一种更诚实、更清醒的生活方式。</p><a href="{{ "minimalism/" | relURL }}">进入专题 →</a></div>
-          </article>
-          <article class="taste-item">
-            <span class="taste-index">02</span>
-            <div><h3>读毛选的普通人</h3><p>不把理论供在书架上，而是尝试用实践、矛盾与调查的方法重新理解现实问题。</p><a href="{{ "collections/" | relURL }}">阅读专栏 →</a></div>
-          </article>
-          <article class="taste-item">
-            <span class="taste-index">03</span>
-            <div><h3>每周来信</h3><p>每周一次，把这一周买过的东西、做过的选择和仍未想通的问题认真写下来。</p><a href="{{ "weekly/" | relURL }}">查看周刊 →</a></div>
-          </article>
-          <article class="taste-item">
-            <span class="taste-index">04</span>
-            <div><h3>运动、身体与工作</h3><p>健身、自行车、休息与创作节奏——身体如何帮助我们辨认真正重要的信号。</p><a href="{{ "archive/" | relURL }}">查看记录 →</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap quote">
-      <div class="section-title">Note of the month · 本月命题</div>
-      <blockquote>“工具的意义，不是替人思考，而是让人把真正重要的判断留给自己。”</blockquote>
-      <cite>— 希路路克 · 关于 AI、创作与判断</cite>
-    </section>
-  </main>
-
-  <footer id="about" class="site-footer">
-    <div class="wrap footer">
+    </div>
+    <div class="editorial-wrap home-numbers">
+      <p class="editorial-kicker">By the numbers · 本站至今</p>
       <div>
-        <div class="section-title">Contact · 联系我</div>
-        <h2>保持思考，也保持联系。</h2>
-        <p>记录生活与思考，用 AI 辅助创作与开发。</p>
-      </div>
-      <div class="contact">
-        公众号：希路路克<br>
-        <a href="{{ "about/" | relURL }}">关于我 →</a><br>
-        <a href="{{ "featured/index.xml" | relURL }}">订阅 Feed →</a>
+        <article><b>{{ len $publicPosts }}</b><p>文章 <span>ARTICLES</span></p></article>
+        <article><b>{{ len $projects }}</b><p>项目 <span>PROJECTS</span></p></article>
+        <article><b>{{ len $services }}</b><p>服务 <span>SERVICES</span></p></article>
+        <article><b>{{ $writingDays }}</b><p>写作天数 <span>DAYS WRITING</span></p></article>
       </div>
     </div>
-  </footer>
-</body>
-</html>
+  </section>
+
+  <section class="home-catalog editorial-wrap" id="projects">
+    <header><div><p class="editorial-kicker">Projects · 个人项目</p><h2>在做什么</h2></div><a href="{{ "products/" | relURL }}">查看全部 →</a></header>
+    <div class="home-catalog-list">
+      {{- range $projects }}
+      <article>
+        <time>{{ .date }}</time>
+        <div><h3><a href="{{ .url | relURL }}">{{ .title }}</a></h3><p>{{ .summary }}</p><footer><span>PROJECT</span><a href="{{ .url | relURL }}">了解 →</a></footer></div>
+        <a class="home-catalog-art" href="{{ .url | relURL }}">{{ with .image }}<img src="{{ . }}" alt="" loading="lazy">{{ else }}<span>{{ .number }}</span>{{ end }}</a>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+
+  <section class="home-catalog editorial-wrap" id="services">
+    <header><div><p class="editorial-kicker">Services · 对外服务</p><h2>能帮上忙的</h2></div><a href="{{ "services/" | relURL }}">查看全部 →</a></header>
+    <div class="home-catalog-list">
+      {{- range $services }}
+      <article>
+        <time>{{ .date }}</time>
+        <div><h3><a href="{{ "services/" | relURL }}">{{ .title }}</a></h3><p>{{ .summary }}</p><footer><span>SERVICE · {{ upper .audience }}</span><a href="{{ "services/" | relURL }}">了解 →</a></footer></div>
+        <div class="home-catalog-art"><span>{{ .number }}</span></div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+
+  <section class="home-quote editorial-wrap">
+    <p class="editorial-kicker">Quote of the month · {{ now.Format "2006.01" }}</p>
+    <blockquote>“工具的意义，不是替人思考，而是让人把真正重要的判断留给自己。”</blockquote>
+    <cite>— 希路路克</cite>
+  </section>
+{{ end }}

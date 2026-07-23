@@ -1,0 +1,20 @@
+{{ define "main" }}
+  {{- $posts := where .Site.Pages "Type" "post" -}}
+  {{- $posts = where $posts "Params.featured_sort_at" "ne" nil -}}
+  {{- $posts = sort $posts "Params.featured_sort_at" "desc" -}}
+  {{- $total := len $posts -}}
+  {{- $paginator := .Paginate $posts 10 -}}
+  <section class="catalog-page editorial-wrap">
+    <header class="catalog-header">
+      <div><p class="editorial-kicker">Featured · 精选档案</p><h1>精选文章</h1></div>
+      <span>{{ $total }} ENTRIES</span>
+    </header>
+    <p class="catalog-meta">CURATED WRITING　·　SORTED BY DATE DESC</p>
+    <div class="catalog-list">
+      {{- range $index, $post := $paginator.Pages }}
+        {{ partial "catalog-row.html" (dict "post" $post "index" (add $index 1) "kind" "Featured") }}
+      {{- end }}
+    </div>
+    {{ partial "editorial-pagination.html" $paginator }}
+  </section>
+{{ end }}

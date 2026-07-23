@@ -3,6 +3,7 @@ public/
 resources/
 .hugo_build.lock
 .preview-public/
+.hugo-preview*.log
 
 # OS
 .DS_Store

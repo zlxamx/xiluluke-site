@@ -1,0 +1,28 @@
+{{- $post := .post -}}
+{{- $index := .index -}}
+{{- $kind := .kind | default "Read" -}}
+{{- $media := $post.Params.media | default slice -}}
+{{- $summary := $post.Params.summary_text | default $post.Summary -}}
+{{- $slug := $post.Params.slug | default $post.Slug -}}
+{{- $projectImage := "" -}}
+{{- if eq $slug "seedraft" -}}{{- $projectImage = "/images/seedraft-project.png" -}}
+{{- else if eq $slug "dialectics" -}}{{- $projectImage = "/images/dialectics-project.png" -}}{{- end -}}
+<article class="catalog-row{{ if and (not $media) (not $projectImage) }} catalog-row-no-image{{ end }}">
+  <span class="catalog-index">NO.{{ printf "%02d" $index }}</span>
+  <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "2006.01.02" }}</time>
+  <div class="catalog-copy">
+    <h2><a href="{{ $post.RelPermalink }}">{{ $post.Title | default "无题" }}</a></h2>
+    {{- with $summary }}<p>{{ . | plainify | truncate 125 }}</p>{{ end }}
+    <div class="catalog-action"><span>{{ upper $kind }}</span><a href="{{ $post.RelPermalink }}">了解 →</a></div>
+  </div>
+  {{- if $projectImage }}
+    <a class="catalog-image" href="{{ $post.RelPermalink }}" tabindex="-1" aria-hidden="true"><img src="{{ $projectImage }}" alt="" loading="lazy"></a>
+  {{- else if $media }}
+    {{- $image := index $media 0 -}}
+    <a class="catalog-image" href="{{ $post.RelPermalink }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ $image.src }}" alt="" loading="lazy">
+    </a>
+  {{- else }}
+    <a class="catalog-image catalog-placeholder" href="{{ $post.RelPermalink }}" tabindex="-1" aria-hidden="true"><span>LX</span></a>
+  {{- end }}
+</article>

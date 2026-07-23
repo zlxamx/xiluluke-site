@@ -1,0 +1,35 @@
+{{ define "main" }}
+  {{- if eq .Type "collection" -}}
+    {{- $slug := .Params.slug | default .Slug -}}
+    {{- $isProducts := eq $slug "products" -}}
+    {{- $all := where (where .Site.Pages "Type" "post") "Kind" "section" -}}
+    {{- $posts := slice -}}
+    {{- range $all -}}
+      {{- $post := . -}}
+      {{- range ($post.Params.collections | default slice) -}}
+        {{- if eq .slug $slug -}}{{- $posts = $posts | append $post -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $posts = $posts.ByDate.Reverse -}}
+    {{- $total := len $posts -}}
+    {{- $paginator := .Paginate $posts 10 -}}
+    <section class="catalog-page editorial-wrap">
+      <header class="catalog-header">
+        <div><p class="editorial-kicker">{{ if $isProducts }}Catalog · 项目档案{{ else }}Collection · 内容专题{{ end }}</p><h1>{{ if $isProducts }}所有项目{{ else }}{{ .Title }}{{ end }}</h1></div>
+        <span>{{ $total }} ENTRIES</span>
+      </header>
+      <p class="catalog-meta">{{ with .Params.summary_text }}{{ . | upper }}{{ else }}SORTED BY DATE DESC{{ end }}</p>
+      <div class="catalog-list">
+        {{- range $index, $post := $paginator.Pages }}
+          {{ partial "catalog-row.html" (dict "post" $post "index" (add $index 1) "kind" (cond $isProducts "Project" "Read")) }}
+        {{- end }}
+      </div>
+      {{ partial "editorial-pagination.html" $paginator }}
+    </section>
+  {{- else -}}
+    <section class="catalog-page editorial-wrap">
+      <header class="catalog-header"><div><p class="editorial-kicker">Index · 页面</p><h1>{{ .Title }}</h1></div></header>
+      <div class="editorial-article-body">{{ .Content }}</div>
+    </section>
+  {{- end -}}
+{{ end }}

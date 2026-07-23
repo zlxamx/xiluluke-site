@@ -1,0 +1,24 @@
+{{ define "main" }}
+  {{- $posts := where .Site.Pages "Type" "post" -}}
+  {{- $posts = where $posts "Params.visibility" "public" -}}
+  {{- $posts = $posts.ByDate.Reverse -}}
+  {{- $total := len $posts -}}
+  {{- $pageSize := 10 -}}
+  {{- $paginator := .Paginate $posts $pageSize -}}
+  {{- $start := add (mul (sub $paginator.PageNumber 1) $pageSize) 1 -}}
+  {{- $end := mul $paginator.PageNumber $pageSize -}}
+  {{- if gt $end $total -}}{{- $end = $total -}}{{- end -}}
+  <section class="catalog-page editorial-wrap">
+    <header class="catalog-header">
+      <div><p class="editorial-kicker">Archive · 文章档案</p><h1>所有文章</h1></div>
+      <span>{{ $total }} ENTRIES</span>
+    </header>
+    <p class="catalog-meta">SHOWING {{ $start }}–{{ $end }} OF {{ $total }}　·　PAGE {{ $paginator.PageNumber }} OF {{ $paginator.TotalPages }}　·　SORTED BY DATE DESC</p>
+    <div class="catalog-list">
+      {{- range $index, $post := $paginator.Pages }}
+        {{ partial "catalog-row.html" (dict "post" $post "index" (add $start $index) "kind" "Read") }}
+      {{- end }}
+    </div>
+    {{ partial "editorial-pagination.html" $paginator }}
+  </section>
+{{ end }}

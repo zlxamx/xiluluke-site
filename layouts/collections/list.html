@@ -1,0 +1,23 @@
+{{ define "main" }}
+  {{- $items := hugo.Data.jant.directory | default slice -}}
+  {{- $count := 0 -}}{{- range $items -}}{{- if eq .type "collection" -}}{{- $count = add $count 1 -}}{{- end -}}{{- end -}}
+  <section class="directory-page editorial-wrap">
+    <header class="catalog-header">
+      <div><p class="editorial-kicker">Collections · 内容专题</p><h1>长期关注</h1></div>
+      <span>{{ $count }} COLLECTIONS</span>
+    </header>
+    <p class="catalog-meta">WRITING, READING, BODY AND DAILY LIFE</p>
+    <div class="directory-list">
+      {{- range $items }}
+        {{- if eq .type "collection" }}
+        <a class="directory-row" href="{{ printf "/%s/" .slug | relURL }}">
+          <span>{{ .sequence }}</span>
+          <div><h2>{{ .title }}</h2>{{ with .description_html }}<div>{{ . | safeHTML }}</div>{{ end }}</div>
+          <small>{{ .entry_count }} ENTRIES</small>
+          <b>→</b>
+        </a>
+        {{- end }}
+      {{- end }}
+    </div>
+  </section>
+{{ end }}

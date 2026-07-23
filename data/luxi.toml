@@ -1,0 +1,69 @@
+[contact]
+wechat = "zlxamx"
+email = "Seedraft@outlook.com"
+github = "https://github.com/zlxamx"
+
+[[projects]]
+number = "01"
+date = "2026.07.22"
+slug = "seedraft"
+title = "文芽 Seedraft"
+summary = "给长篇连载创作者的 AI 写作工作台。AI 在后台完成生成、审计、整理与推进，创作者始终负责判断、批准与方向。"
+status = "Current"
+url = "/seedraft/"
+image = "/images/seedraft-project.png"
+
+[[projects]]
+number = "02"
+date = "2026.07.22"
+slug = "dialectics"
+title = "唯物辩证法问答"
+summary = "围绕《矛盾论》《实践论》提问，用辩证法的思路拆解现实问题，获得一条可以继续行动的分析路径。"
+status = "Released"
+url = "/dialectics/"
+image = "/images/dialectics-project.png"
+
+[[services]]
+number = "01"
+date = "2026.07"
+title = "AI 长篇写作工作流"
+summary = "为连载作者与内容团队搭建角色档案、正文生成、质量审计、章节任务包和持续推进机制。"
+audience = "Writers & content teams"
+
+[[services]]
+number = "02"
+date = "2026.07"
+title = "AI 产品原型共创"
+summary = "从一个明确的问题出发，梳理核心流程，快速做成可以被使用、观察和验证的网页或桌面产品原型。"
+audience = "Idea to usable prototype"
+
+[[services]]
+number = "03"
+date = "2026.07"
+title = "Seedraft 早期共创计划"
+summary = "与真实的小说作者和内容团队共同测试文芽，让产品在具体创作问题中持续完善。"
+audience = "Serious long-form creators"
+
+[[concerns]]
+number = "01"
+title = "极简主义"
+summary = "不是少，而是有判断地留下。"
+url = "/minimalism/"
+
+[[concerns]]
+number = "02"
+title = "随笔与思考"
+summary = "从具体生活出发，保留仍在形成中的判断。"
+url = "/essays/"
+
+[[concerns]]
+number = "03"
+title = "每周来信"
+summary = "买过的东西、做过的选择和仍未想通的问题。"
+url = "/weekly/"
+
+[[concerns]]
+number = "04"
+title = "生活与健康"
+summary = "运动、身体、休息与长期工作的节奏。"
+url = "/life-health/"

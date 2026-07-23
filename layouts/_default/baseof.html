@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>{{ partial "editorial-head.html" . }}</head>
+  <body class="editorial-site">
+    {{ partial "editorial-header.html" . }}
+    <main class="editorial-main" id="main">{{ block "main" . }}{{ end }}</main>
+    {{ partial "editorial-footer.html" . }}
+    <jant-media-lightbox></jant-media-lightbox>
+  </body>
+</html>
