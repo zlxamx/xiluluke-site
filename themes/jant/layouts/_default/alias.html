@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ .Site.Title }}</title>
+    <meta name="robots" content="noindex,follow">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <script>
+      (function () {
+        var target = {{ .Permalink }};
+        var rootAliases = {{ with .Params.root_aliases }}{{ . | jsonify }}{{ else }}[]{{ end }};
+        try {
+          var path = window.location.pathname || "";
+          var normalized = "/" + path.replace(/^\/+|\/+$/g, "") + "/";
+          var isHistoricalRootAlias = false;
+          for (var i = 0; i < rootAliases.length; i++) {
+            var alias = String(rootAliases[i]);
+            var aliasNorm = "/" + alias.replace(/^\/+|\/+$/g, "") + "/";
+            if (aliasNorm === normalized) {
+              isHistoricalRootAlias = true;
+              break;
+            }
+          }
+          if (isHistoricalRootAlias) {
+            // Historical root-slug alias — redirect to the post itself
+            // without injecting an anchor.
+            window.location.replace(target);
+            return;
+          }
+          // Thread reply alias — append the reply slug as an anchor so
+          // the thread page scrolls to the original reply.
+          var parts = normalized.split("/").filter(Boolean);
+          var slug = parts.length > 0 ? parts[parts.length - 1] : "";
+          if (slug) {
+            window.location.replace(target + "#" + slug);
+          } else {
+            window.location.replace(target);
+          }
+        } catch (_err) {
+          window.location.replace(target);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="{{ .Permalink }}">{{ .Permalink }}</a>&hellip;</p>
+  </body>
+</html>

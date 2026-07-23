@@ -1,0 +1,530 @@
+/**
+ * Design Tokens
+ *
+ * CSS custom properties for all visual aspects of the UI.
+ * These are the stable customization API — override in custom CSS
+ * to change typography, layout, surfaces, and element sizing.
+ */
+
+:root {
+  /* Typography — Font families */
+  --font-cjk-serif-fallback: "Jant Language Fallback";
+  --font-cjk-sans-fallback: "Jant Language Fallback";
+  --font-body:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Helvetica, Arial, var(--font-cjk-sans-fallback),
+    sans-serif;
+  --font-heading:
+    "New York Small", "New York", "Iowan Old Style", Charter,
+    "Bitstream Charter", "Source Serif 4", Cambria, "Sitka Text", Georgia,
+    var(--font-cjk-serif-fallback), ui-serif, serif;
+  --font-site-title:
+    "New York Small", "New York", "Iowan Old Style", Charter,
+    "Bitstream Charter", "Source Serif 4", Cambria, "Sitka Text", Georgia,
+    var(--font-cjk-serif-fallback), ui-serif, serif;
+  --font-serif:
+    var(--font-cjk-serif-fallback), ui-serif, "New York Small", "New York",
+    "Iowan Old Style", Charter, Georgia, "Times New Roman", Times, serif;
+  --font-ui:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Helvetica, Arial, var(--font-cjk-sans-fallback),
+    sans-serif;
+  --font-mono:
+    ui-monospace, Menlo, Monaco, Consolas, "Cascadia Code", "Courier New",
+    monospace;
+  /*
+   * Blockquote font family.
+   *
+   * Defaults to `inherit` so blockquotes follow the body font in sans-only
+   * themes (Clean, Friendly, Bold) and serif-only themes (Tufte, Bookish).
+   * Mixed themes that want a distinct blockquote voice — e.g. Classic, which
+   * pairs a sans body with serif headings — override this token in their
+   * `cssVariables` to point at a serif stack. This also restores a type-level
+   * distinction for CJK, where italic is disabled.
+   */
+  --font-blockquote: inherit;
+
+  /* Typography — Font weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  /*
+   * Unified type scale.
+   *
+   * Every font-size in the system — reading content AND UI controls —
+   * must reference one of these tokens. No raw rem/px values elsewhere.
+   *
+   *   --type-display    2.7rem  (40.5px) — page titles, h1
+   *   --type-title      2.1rem  (31.5px) — h2, feed card titles
+   *   --type-subtitle   1.8rem  (27px)   — h3
+   *   --type-body       1.4rem  (21px)   — running text, form inputs
+   *   --type-secondary  1.1rem  (16.5px) — meta, nav, sidenotes, UI labels
+   *   --type-base       1.0rem  (15px)   — UI buttons, controls
+   *   --type-sm         0.9rem  (13.5px) — small UI text
+   *   --type-xs         0.8rem  (12px)   — captions, descriptions, chips
+   *   --type-2xs        0.65rem (9.75px) — tiny labels, file sizes, badges
+   */
+  --type-display: 2.7rem;
+  --type-title: 2.1rem;
+  --type-subtitle: 1.8rem;
+  --type-body: 1.4rem;
+  --type-secondary: 1.1rem;
+  --type-base: 1rem;
+  --type-sm: 0.9rem;
+  --type-xs: 0.8rem;
+  --type-2xs: 0.65rem;
+
+  /* Content reading tokens — desktop maps to core scale,
+     mobile overrides below cap sizes for small screens.
+     --type-content-scale uniformly scales all content sizes
+     without affecting UI controls. */
+  --type-content-scale: 0.8;
+  --type-content-display: calc(var(--type-display) * var(--type-content-scale));
+  --type-content-title: calc(var(--type-title) * var(--type-content-scale));
+  --type-content-subtitle: calc(
+    var(--type-subtitle) * var(--type-content-scale)
+  );
+  --type-content-body: calc(var(--type-body) * var(--type-content-scale));
+  --type-content-quote: calc(var(--type-content-body) * 1.16);
+  --type-content-quote-leading: 1.4;
+
+  /* Semantic aliases */
+  --type-body-size: var(--type-content-body);
+  --type-footnote-ref: calc(var(--type-body-size) * 0.75);
+  --type-code: calc(var(--type-body-size) * 0.94);
+  --type-code-block: calc(var(--type-body-size) * 0.9);
+  --type-body-tracking: 0;
+  --type-ui-title: var(--type-secondary);
+  --type-ui-control: var(--type-base);
+  --type-ui-meta: var(--type-base);
+  --type-ui-hint: var(--type-sm);
+  --type-ui-caption: var(--type-xs);
+  --type-ui-micro: var(--type-2xs);
+  --type-ui-input: var(--type-secondary);
+  --type-thread-context: var(--type-base);
+  --type-thread-context-title: var(--type-secondary);
+  --type-thread-context-meta: var(--type-sm);
+  --feed-note-title-size: calc(var(--type-content-body) * 1.36);
+  --feed-note-title-leading: var(--type-heading-leading);
+  --type-body-leading: 1.7;
+  --type-display-leading: 1.15;
+  --type-heading-leading: 1.15;
+  --type-heading-weight: var(--fw-medium);
+  --type-heading-tracking: 0;
+  --type-display-weight: var(--fw-medium);
+  --type-display-tracking: 0;
+  --type-label-weight: var(--fw-medium);
+  --type-label-tracking: 0.08em;
+
+  /* Layout — Tufte proportional model */
+  --content-max-width: 42rem;
+  --form-max-width: 42rem;
+  /* compose dialogs + feed content cap */
+  --layout-body-max-width: 1088px;
+  --layout-content-width: 55%;
+  --layout-sidenote-width: 50%;
+  --layout-sidenote-gap: 10%;
+  --layout-sidenote-margin: -60%;
+  --site-padding: 1.5rem;
+  --content-gap: 1rem;
+  --space-xl: 2rem;
+  --space-2xl: 4rem;
+  /*
+   * Home timeline vertical rhythm — the single source of truth for the gaps
+   * between stacked sections on the home page:
+   *
+   *   site description → separator → first post → divider → post → ...
+   *
+   * where "separator" is the description hairline (logged out) or the compose
+   * prompt (logged in). Every one of those gaps derives from this token, and
+   * the individual pieces (compose prompt, description hairline, post cards)
+   * carry no rhythm margin of their own — the structural wrappers
+   * (.site-home-header, hr.feed-divider) own the spacing. Retune the whole
+   * feed cadence by changing this one value.
+   *
+   * Note: per-format card padding (.feed-quote-post, thread previews) is the
+   * card's own internal spacing and is intentionally NOT part of this rhythm.
+   *
+   * Kept as a free-standing value (not pinned to the --space-* scale) so the
+   * feed cadence can be tuned independently.
+   */
+  --site-feed-rhythm: 4.4rem;
+  /*
+   * The post footer's action row (reply / menu buttons) is a taller tap
+   * target than its visible content, leaving a few px of dead space below
+   * the last visible element of every post (~5.9px logged out from the
+   * footer min-height, ~6.8px logged in from the menu button). hr.feed-divider
+   * subtracts this from its top margin so the VISIBLE gap between posts equals
+   * --site-feed-rhythm — the same as the header spacing. Re-measure if the
+   * footer button size or meta font changes.
+   */
+  --post-footer-overshoot: 6px;
+  /*
+   * The site intro (description) block is deliberately tighter than
+   * --site-feed-rhythm so it reads as a compact header unit rather than a
+   * full feed section. -top: gap from the header nav down to the intro.
+   * -bottom: gap from the intro down to its separator — the hairline (logged
+   * out) or the compose prompt text (logged in). Same values in both states.
+   */
+  --site-intro-gap-top: 24px;
+  --site-intro-gap-bottom: 36px;
+
+  /* Sidebar layout (admin + site sidebar pages) */
+  --sidebar-width: 12rem;
+  --sidebar-gap: 2rem;
+
+  /* Surfaces */
+  --card-bg: var(--card);
+  --card-radius: 0;
+  --card-padding: 1rem;
+  --card-border-width: 0;
+  --card-shadow: none;
+
+  /* Elements */
+  --avatar-size: 28px;
+  --avatar-radius: 50%;
+  --media-radius: 0.5rem;
+
+  /* Icons */
+  --icon-stroke: 2;
+  --icon-stroke-fine: 1.5;
+
+  /* Derived color tokens (from BaseCoat variables) */
+  --site-accent: var(--primary);
+  --site-accent-text: var(--primary-foreground);
+  --site-column-outline: var(--border);
+  --site-border-light: color-mix(
+    in srgb,
+    var(--site-column-outline) 52%,
+    transparent
+  );
+  --site-threadline: var(--border);
+  --site-page-bg: var(--background);
+  --site-elevated-bg: var(--background);
+  --site-nav-hover-bg: var(--accent);
+  --site-text-primary: var(--foreground);
+  --site-text-secondary: var(--muted-foreground);
+  --site-reading-title: color-mix(
+    in oklch,
+    var(--site-text-primary) 81%,
+    black
+  );
+  --site-reading-heading: color-mix(
+    in oklch,
+    var(--site-text-primary) 86%,
+    black
+  );
+  --site-reading-body: color-mix(in oklch, var(--site-text-primary) 90%, black);
+  --site-reading-quote: color-mix(
+    in oklch,
+    var(--site-text-primary) 95%,
+    black
+  );
+  --site-reading-meta: color-mix(
+    in srgb,
+    var(--site-text-secondary) 72%,
+    var(--site-text-primary)
+  );
+  --site-reading-caption: color-mix(
+    in srgb,
+    var(--site-text-secondary) 88%,
+    var(--site-text-primary)
+  );
+  --site-footnote-text: var(--site-reading-caption);
+  --site-footnote-marker: color-mix(
+    in oklch,
+    var(--site-text-secondary) 88%,
+    var(--site-page-bg)
+  );
+  --site-content-link: inherit;
+  --site-content-link-hover: var(--site-text-primary);
+  --site-content-link-underline: color-mix(
+    in srgb,
+    var(--site-text-secondary) 58%,
+    transparent
+  );
+  --site-reading-link: var(--site-reading-body);
+  --site-reading-link-hover: var(--site-reading-heading);
+  --site-reading-link-underline: color-mix(
+    in srgb,
+    var(--site-reading-meta) 58%,
+    transparent
+  );
+  --site-text-placeholder: oklch(from var(--muted-foreground) l c h / 0.5);
+  --site-media-outline: var(--border);
+  --site-divider: var(--border);
+  --site-feed-card-bg: color-mix(
+    in srgb,
+    var(--site-elevated-bg) 88%,
+    var(--site-nav-hover-bg)
+  );
+  --site-feed-card-border: color-mix(
+    in srgb,
+    var(--site-divider) 78%,
+    transparent
+  );
+  --site-feed-card-shadow: color-mix(
+    in srgb,
+    var(--site-text-primary) 12%,
+    transparent
+  );
+  --site-code-text: color-mix(
+    in srgb,
+    var(--site-reading-heading) 86%,
+    var(--site-reading-body)
+  );
+  --site-code-bg: color-mix(in srgb, var(--site-reading-meta) 12%, transparent);
+  --site-code-block-bg: color-mix(
+    in srgb,
+    var(--site-elevated-bg) 94%,
+    var(--site-nav-hover-bg)
+  );
+  --site-code-block-border: color-mix(
+    in srgb,
+    var(--site-divider) 62%,
+    transparent
+  );
+  --site-feed-divider-color: color-mix(
+    in srgb,
+    var(--site-text-secondary) 30%,
+    transparent
+  );
+  --site-feed-link-tint: color-mix(in srgb, var(--site-accent) 7%, transparent);
+  --site-feed-quote-tint: color-mix(
+    in srgb,
+    var(--site-accent) 10%,
+    transparent
+  );
+  --site-blockquote-rail: color-mix(
+    in srgb,
+    var(--site-accent) 22%,
+    var(--site-divider)
+  );
+  --site-blockquote-bg: color-mix(
+    in srgb,
+    var(--site-feed-quote-tint) 62%,
+    var(--site-page-bg)
+  );
+  --site-blockquote-text: color-mix(
+    in oklch,
+    var(--site-text-primary) 92%,
+    black
+  );
+  --site-summary-blockquote-bg: color-mix(
+    in srgb,
+    var(--site-feed-quote-tint) 42%,
+    var(--site-page-bg)
+  );
+  --site-reading-blockquote-rail: color-mix(
+    in srgb,
+    var(--site-reading-link) 18%,
+    var(--site-reading-meta)
+  );
+  --site-reading-blockquote-bg: color-mix(
+    in srgb,
+    var(--site-accent) 6%,
+    var(--site-page-bg)
+  );
+  --site-thread-context-bg: color-mix(
+    in srgb,
+    var(--site-nav-hover-bg) 58%,
+    transparent
+  );
+  --site-thread-context-border: color-mix(
+    in srgb,
+    var(--site-divider) 74%,
+    transparent
+  );
+  --site-thread-gap-bg: color-mix(
+    in srgb,
+    var(--site-nav-hover-bg) 42%,
+    transparent
+  );
+  --site-thread-item-spacing: 32px;
+  --site-thread-context-max-height: 160px;
+  --site-thread-dot-ring: color-mix(
+    in srgb,
+    var(--site-accent) 16%,
+    transparent
+  );
+  --compose-paper-bg: var(--site-page-bg);
+  --compose-control-bg: color-mix(
+    in srgb,
+    var(--site-nav-hover-bg) 72%,
+    var(--compose-paper-bg)
+  );
+  --compose-control-bg-strong: color-mix(
+    in srgb,
+    var(--site-nav-hover-bg) 88%,
+    var(--compose-paper-bg)
+  );
+  --compose-control-border: color-mix(
+    in srgb,
+    var(--site-column-outline) 68%,
+    transparent
+  );
+  --compose-blockquote-rail: color-mix(
+    in srgb,
+    var(--site-accent) 24%,
+    var(--compose-control-border)
+  );
+  --compose-blockquote-bg: color-mix(
+    in srgb,
+    var(--compose-control-bg) 56%,
+    var(--compose-paper-bg)
+  );
+  --compose-blockquote-bg-focus: color-mix(
+    in srgb,
+    var(--compose-control-bg-strong) 70%,
+    var(--compose-paper-bg)
+  );
+  --compose-blockquote-text: color-mix(
+    in srgb,
+    var(--site-text-primary) 88%,
+    var(--site-text-secondary)
+  );
+  --compose-floating-bg: color-mix(
+    in srgb,
+    var(--compose-paper-bg) 94%,
+    var(--site-nav-hover-bg) 6%
+  );
+
+  /* Search highlight */
+  --search-mark-bg: oklch(0.92 0.14 90 / 0.55);
+  --search-mark-color: oklch(0.35 0.09 70);
+
+  /* Admin */
+  --dash-bg: oklch(0.97 0.005 80);
+  --dash-card-radius: 10px;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --site-padding: 1.875rem;
+  }
+}
+
+/* Tufte two-column → single-column collapse.
+ *
+ * Below this width the post column is already narrowed to `min(100%, 35rem)`
+ * (preset.css) and there is no room for a 45% sidenote gutter, so all content
+ * goes full-width. Single images (MediaGallery getSingleVisualWidth) and link
+ * previews (.link-preview) read this token directly, so they collapse here too.
+ *
+ * Keep this breakpoint in sync with the post-column collapse (preset.css /
+ * ui.css feed-divider, both `max-width: 1024px`) and the sidenote float→inline
+ * collapse (ui.css). They are one layout switch; do not let them drift apart. */
+@media (max-width: 1024px) {
+  :root {
+    --layout-content-width: 100%;
+  }
+}
+
+/*
+ * Dark-mode reading color overrides.
+ *
+ * These rules must beat the active color theme's light-mode block, which
+ * uses `:root:root { ... }` (specificity 0,0,2,0) with no media query and
+ * therefore applies in both light and dark modes. Most themes do not
+ * redefine `--site-reading-*` in their dark block, so without higher
+ * specificity here the light reading-body color would leak into dark mode
+ * (resulting in near-invisible body text on a dark background).
+ *
+ * We repeat `:root:root` to reach specificity 0,0,3,0, which outranks the
+ * theme's light `:root:root` (0,0,2,0). The theme's dark blocks use
+ * `:root:root[data-theme-mode="dark"]` or `:root:root:not([data-theme-mode="light"])`
+ * (also 0,0,3,0), so a theme that explicitly defines dark reading colors
+ * still wins via source order.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:root:not([data-theme-mode="light"]) {
+    --site-reading-title: var(--site-text-primary);
+    --site-reading-heading: color-mix(
+      in oklch,
+      var(--site-text-primary) 94%,
+      var(--site-text-secondary)
+    );
+    --site-reading-body: color-mix(
+      in oklch,
+      var(--site-text-primary) 96%,
+      black
+    );
+    --site-reading-quote: color-mix(
+      in oklch,
+      var(--site-text-primary) 98%,
+      black
+    );
+    --site-reading-meta: color-mix(
+      in srgb,
+      var(--site-text-secondary) 92%,
+      var(--site-text-primary)
+    );
+    --site-reading-caption: color-mix(
+      in srgb,
+      var(--site-text-secondary) 96%,
+      var(--site-text-primary)
+    );
+    --site-reading-link: var(--site-reading-body);
+    --search-mark-bg: oklch(0.45 0.1 85 / 0.5);
+    --search-mark-color: oklch(0.92 0.08 90);
+    --dash-bg: oklch(0.2 0.005 80);
+  }
+}
+
+:root:root[data-theme-mode="dark"] {
+  --site-reading-title: var(--site-text-primary);
+  --site-reading-heading: color-mix(
+    in oklch,
+    var(--site-text-primary) 94%,
+    var(--site-text-secondary)
+  );
+  --site-reading-body: color-mix(in oklch, var(--site-text-primary) 96%, black);
+  --site-reading-quote: color-mix(
+    in oklch,
+    var(--site-text-primary) 98%,
+    black
+  );
+  --site-reading-meta: color-mix(
+    in srgb,
+    var(--site-text-secondary) 92%,
+    var(--site-text-primary)
+  );
+  --site-reading-caption: color-mix(
+    in srgb,
+    var(--site-text-secondary) 96%,
+    var(--site-text-primary)
+  );
+  --site-reading-link: var(--site-reading-body);
+  --search-mark-bg: oklch(0.45 0.1 85 / 0.5);
+  --search-mark-color: oklch(0.92 0.08 90);
+  --dash-bg: oklch(0.2 0.005 80);
+}
+
+@media (max-width: 760px), (hover: none) and (pointer: coarse) {
+  :root {
+    /* Content layer — tighter scale for mobile reading.
+       Ratio ≈ 1.88 : 1.42 : 1.15 : 1 (display:title:subtitle:body).
+       At 15px root × 0.8 content-scale: 29.4 / 22.2 / 18 / 15.6px.
+       Body is floored to a 16px minimum below (max()) for readability;
+       the floor still yields to calc() when the user zooms the root up. */
+    --type-content-display: calc(2.45rem * var(--type-content-scale));
+    --type-content-title: calc(1.85rem * var(--type-content-scale));
+    --type-content-subtitle: calc(1.5rem * var(--type-content-scale));
+    --type-content-body: max(16px, calc(1.3rem * var(--type-content-scale)));
+
+    /* UI layer — pixel floors for touch targets */
+    --type-ui-title: max(16px, var(--type-secondary));
+    --type-ui-control: max(15px, var(--type-base));
+    --type-ui-meta: max(15px, var(--type-secondary));
+    --type-ui-hint: max(13px, var(--type-sm));
+    --type-ui-caption: max(13px, var(--type-xs));
+    --type-ui-micro: max(12px, var(--type-2xs));
+    --type-ui-input: max(16px, var(--type-secondary));
+    --type-thread-context: max(15px, var(--type-base));
+    --type-thread-context-title: max(16px, var(--type-secondary));
+    --type-thread-context-meta: max(14px, var(--type-sm));
+  }
+}

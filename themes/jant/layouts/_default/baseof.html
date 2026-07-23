@@ -1,0 +1,22 @@
+<!doctype html>
+{{- $lang := .Site.LanguageCode | default "en" -}}
+{{- $themeMode := .Site.Params.theme_mode | default "auto" -}}
+{{- $themeId := .Site.Params.theme_id -}}
+<html lang="{{ $lang }}"{{ with $themeId }} data-theme="{{ . }}"{{ end }}{{ if ne $themeMode "auto" }} data-theme-mode="{{ $themeMode }}"{{ end }}>
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <div class="site-page">
+      {{ partial "header.html" . }}
+      <main class="site-main" id="main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+    {{/* Mount the shared media lightbox web component once per page.
+         The component installs a document-level click listener on connect
+         and intercepts clicks on [data-post-media] a[data-lightbox-index]. */}}
+    <jant-media-lightbox></jant-media-lightbox>
+  </body>
+</html>

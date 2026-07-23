@@ -1,0 +1,31 @@
+{{ define "main" }}
+  {{- /* Root posts are branch bundles (kind=section), so we iterate .Site.Pages.
+       Hugo already excludes draft pages, so `private` posts (emitted with
+       `draft: true`) are filtered out automatically. This leaves `public`
+       and `latest_hidden` posts — both visible in the archive timeline. */ -}}
+  {{- $posts := where .Site.Pages "Type" "post" -}}
+  {{- $posts = $posts.ByDate.Reverse -}}
+  {{- $pageSize := .Site.Params.archive_page_size | default (.Site.Params.page_size | default 10) -}}
+  {{- $paginator := .Paginate $posts $pageSize -}}
+
+  <section class="section section-archive home">
+    <header class="section-header">
+      <h1 class="section-title">{{ .Title | default "Archive" }}</h1>
+      {{- with .Params.summary_text -}}
+        <p class="section-summary">{{ . }}</p>
+      {{- end -}}
+    </header>
+
+    {{- if $paginator.Pages -}}
+      <div class="post-list post-list-main">
+        {{- range $i, $p := $paginator.Pages -}}
+          {{- if gt $i 0 -}}<hr class="feed-divider" aria-hidden="true" />{{- end -}}
+          {{ partial "thread-preview.html" $p }}
+        {{- end -}}
+      </div>
+      {{ partial "pagination.html" $paginator }}
+    {{- else -}}
+      <p class="empty-state">Nothing published yet. Write your first post to get started.</p>
+    {{- end -}}
+  </section>
+{{ end }}

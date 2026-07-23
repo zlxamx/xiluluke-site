@@ -1,0 +1,2079 @@
+/*
+ * Jant Hugo Export — main.css
+ *
+ * Fresh minimal text-first design. All colors, spacing, and type sizing
+ * come from tokens.css (loaded first in the <head>). Color theme values
+ * are supplied by theme.css; customizations live in custom.css.
+ *
+ * Load order in <head>: tokens.css → main.css → theme.css → custom.css
+ *
+ * This file intentionally avoids any hardcoded hex, rgb, or px color
+ * values. Everything token-driven so the design evolves with the theme.
+ */
+
+/* -------------------------------------------------------------------------
+ * Reset + box model
+ * ------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-body-size, var(--type-content-body));
+  line-height: var(--type-body-leading);
+  color: var(--site-reading-body);
+  background-color: var(--site-page-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video,
+audio,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--site-divider);
+  margin: var(--space-xl) 0;
+}
+
+/* -------------------------------------------------------------------------
+ * Typography
+ * ------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-leading);
+  letter-spacing: var(--type-heading-tracking);
+  color: var(--site-reading-heading);
+  margin: 1.6em 0 0.6em;
+}
+
+h1 {
+  font-size: var(--type-content-display);
+  line-height: var(--type-display-leading);
+  font-weight: var(--type-display-weight);
+  letter-spacing: var(--type-display-tracking);
+  margin: 4rem 0 1.5rem;
+}
+
+h2 {
+  font-size: var(--type-content-title);
+  margin: 2.1rem 0 1.4rem;
+}
+
+h3 {
+  font-size: var(--type-content-subtitle);
+  margin: 2rem 0 1.4rem;
+}
+
+h4 {
+  font-size: var(--type-content-body);
+  font-weight: var(--fw-medium);
+}
+
+h5,
+h6 {
+  font-size: var(--type-content-body);
+  font-weight: var(--fw-medium);
+  color: var(--site-reading-meta);
+}
+
+p {
+  margin: 1.4rem 0;
+}
+
+small {
+  font-size: var(--type-sm);
+}
+
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: var(--type-code);
+  line-height: 1.42;
+}
+
+code {
+  color: var(--site-code-text);
+  overflow-wrap: break-word;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--type-code-block);
+  line-height: 1.5;
+  padding: 1rem;
+  overflow-x: auto;
+  color: var(--site-code-text);
+  background-color: var(--site-code-block-bg);
+  border: 1px solid var(--site-code-block-border);
+  border-radius: 6px;
+}
+
+pre code {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+:not(pre) > code {
+  padding: 0.08em 0.28em;
+  background-color: var(--site-code-bg);
+  border-radius: 0.22em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Blockquotes — tinted background card with quote icon (matches main site). */
+blockquote {
+  position: relative;
+  margin: 1.4rem 0;
+  padding: 1.4rem 1rem 0.75rem;
+  border: none;
+  background: var(--site-blockquote-bg);
+  border-radius: 6px;
+  color: var(--site-blockquote-text);
+  font-family: var(--font-blockquote);
+  font-style: italic;
+  font-weight: inherit;
+  quotes: none;
+  text-wrap: pretty;
+}
+
+blockquote::before {
+  content: "";
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-bottom: 0.35rem;
+  background: var(--site-blockquote-rail);
+  opacity: 0.6;
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.4 10.5C16.9 17.7 11.5 26.8 8.2 37.7C4.9 48.7 4.8 58.9 7.8 68.2C10.3 75.7 15.4 79.5 22.9 79.5C28 79.5 32.2 77.8 35.4 74.2C38.6 70.7 40.2 66.5 40.2 61.4C40.2 56.5 38.8 52.6 36 49.6C33.3 46.6 29.7 45.1 25.2 45.1C23.4 45.1 21.8 45.3 20.2 45.8C22.2 37.3 26.7 29.2 33.6 21.4L24.4 10.5Z'/%3E%3Cpath d='M60.8 10.5C53.3 17.7 47.9 26.8 44.6 37.7C41.3 48.7 41.2 58.9 44.2 68.2C46.7 75.7 51.8 79.5 59.3 79.5C64.4 79.5 68.6 77.8 71.8 74.2C75 70.7 76.6 66.5 76.6 61.4C76.6 56.5 75.2 52.6 72.4 49.6C69.7 46.6 66.1 45.1 61.6 45.1C59.8 45.1 58.2 45.3 56.6 45.8C58.6 37.3 63.1 29.2 70 21.4L60.8 10.5Z'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.4 10.5C16.9 17.7 11.5 26.8 8.2 37.7C4.9 48.7 4.8 58.9 7.8 68.2C10.3 75.7 15.4 79.5 22.9 79.5C28 79.5 32.2 77.8 35.4 74.2C38.6 70.7 40.2 66.5 40.2 61.4C40.2 56.5 38.8 52.6 36 49.6C33.3 46.6 29.7 45.1 25.2 45.1C23.4 45.1 21.8 45.3 20.2 45.8C22.2 37.3 26.7 29.2 33.6 21.4L24.4 10.5Z'/%3E%3Cpath d='M60.8 10.5C53.3 17.7 47.9 26.8 44.6 37.7C41.3 48.7 41.2 58.9 44.2 68.2C46.7 75.7 51.8 79.5 59.3 79.5C64.4 79.5 68.6 77.8 71.8 74.2C75 70.7 76.6 66.5 76.6 61.4C76.6 56.5 75.2 52.6 72.4 49.6C69.7 46.6 66.1 45.1 61.6 45.1C59.8 45.1 58.2 45.3 56.6 45.8C58.6 37.3 63.1 29.2 70 21.4L60.8 10.5Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+
+blockquote :where(p:first-of-type)::before,
+blockquote :where(p:last-of-type)::after {
+  content: none;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote p + p,
+blockquote ul,
+blockquote ol,
+blockquote pre {
+  margin-top: 0.6em;
+}
+
+blockquote cite {
+  font-style: normal;
+  color: var(--site-reading-meta);
+  font-size: var(--type-sm);
+}
+
+/* CJK: no italic for blockquotes (no true italic glyph) */
+:lang(zh) blockquote,
+:lang(ja) blockquote,
+:lang(ko) blockquote {
+  font-style: normal;
+}
+
+ul,
+ol {
+  padding-left: 1.4em;
+  margin: 1.25em 0;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Normalize li > p so list spacing is controlled by li alone,
+   regardless of whether the markdown renderer wraps li contents in <p>. */
+li > p:first-child {
+  margin-top: 0;
+}
+
+li > p:last-child {
+  margin-bottom: 0;
+}
+
+li > p:has(+ ol) {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--site-reading-link);
+  text-decoration: underline;
+  text-decoration-color: var(--site-reading-link-underline);
+  text-underline-offset: 0.15em;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--site-reading-link-hover);
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+time {
+  color: var(--site-reading-meta);
+  font-size: var(--type-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------------------------------
+ * Page layout — Tufte horizontal frame
+ *
+ * Mirrors the main site's `.site-page > header/main/footer` rule. Every
+ * top-level section gets the same asymmetric padding so the reading column
+ * aligns with the rest of the site.
+ *
+ * 12.5% left + 4% right = 16.5% padding → content = 83.5% of the box.
+ * max-width = body-max-width / 0.835 so the inner content area exactly
+ * equals `--layout-body-max-width` on wide viewports. min() caps keep
+ * padding from growing beyond 210px / 67px. Mobile widens to 5% / 5%
+ * and the 55% content column collapses to 100% (via tokens.css).
+ * ------------------------------------------------------------------------- */
+
+.site-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--site-page-bg);
+}
+
+.site-page > header,
+.site-page > main,
+.site-page > footer,
+.site-page > .home-branding-credit {
+  width: 100%;
+  max-width: calc(var(--layout-body-max-width) / 0.835);
+  padding-left: min(12.5%, 210px);
+  padding-right: min(4%, 67px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 760px) {
+  .site-page > header,
+  .site-page > main,
+  .site-page > footer,
+  .site-page > .home-branding-credit {
+    padding-left: max(5%, 28px);
+    padding-right: 5%;
+  }
+}
+
+.site-main {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+/* -------------------------------------------------------------------------
+ * Header
+ * ------------------------------------------------------------------------- */
+
+.site-header {
+  padding-top: 24px;
+  background-color: var(--site-page-bg);
+}
+
+@media (min-width: 700px) {
+  .site-header {
+    padding-top: 30px;
+  }
+}
+
+.site-header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+.site-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(0.6rem, 2.2vw, 1rem);
+  flex-wrap: nowrap;
+  min-height: 2.75rem;
+  width: 100%;
+}
+
+.site-header-top-bordered {
+  padding-bottom: 15px;
+}
+
+@media (min-width: 700px) {
+  .site-header-top-bordered {
+    padding-bottom: 18px;
+  }
+}
+
+.site-logo {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 0.15rem 0;
+  font-family: var(--font-site-title);
+  font-size: var(--type-subtitle);
+  font-weight: var(--fw-regular);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--site-text-primary);
+  text-decoration: none;
+}
+
+.site-logo:hover,
+.site-logo:focus {
+  color: var(--site-text-primary);
+  text-decoration: none;
+}
+
+.site-logo-avatar {
+  box-sizing: border-box;
+  width: calc(var(--avatar-size) + 4px);
+  height: calc(var(--avatar-size) + 4px);
+  border-radius: var(--avatar-radius);
+  object-fit: cover;
+  border: 1px solid color-mix(in srgb, var(--site-divider) 82%, transparent);
+  flex: none;
+}
+
+.site-logo-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.site-header-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: clamp(0.6rem, 2.2vw, 1rem);
+  margin-left: auto;
+  min-width: 0;
+  font-family: var(--font-ui);
+}
+
+.site-header-link {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  position: relative;
+  min-height: 2rem;
+  padding: 0.15rem 0;
+  font-size: var(--type-ui-meta);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--site-text-secondary) 62%, transparent);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.site-header-link:hover,
+.site-header-link:focus {
+  color: color-mix(
+    in srgb,
+    var(--site-text-primary) 84%,
+    var(--site-text-secondary)
+  );
+  text-decoration: none;
+}
+
+.site-header-link-active {
+  color: color-mix(
+    in srgb,
+    var(--site-text-primary) 84%,
+    var(--site-text-secondary)
+  );
+}
+
+/* --- "More" dropdown ---------------------------------------------------- */
+
+.site-header-more {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-header-more-responsive-only {
+  display: none;
+}
+
+.site-header-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2rem;
+  padding: 0.15rem 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: var(--type-ui-meta);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: color-mix(in srgb, var(--site-text-secondary) 62%, transparent);
+  transition: color 0.15s;
+}
+
+.site-header-more-btn svg {
+  width: 0.82rem;
+  height: 0.82rem;
+  transition: transform 0.18s ease;
+}
+
+.site-header-more-btn:hover,
+.site-header-more-btn[aria-expanded="true"] {
+  color: color-mix(
+    in srgb,
+    var(--site-text-primary) 84%,
+    var(--site-text-secondary)
+  );
+}
+
+.site-header-more-btn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.site-header-more-popover {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.6rem;
+  min-width: 12.25rem;
+  padding: 0.3rem 0;
+  background: var(--site-page-bg);
+  border: 0.5px solid color-mix(in srgb, var(--site-divider) 80%, transparent);
+  border-radius: 0.4rem;
+  box-shadow:
+    0 4px 20px -8px rgba(0, 0, 0, 0.12),
+    0 2px 6px -2px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transform-origin: top right;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0s linear 0.18s;
+  z-index: 50;
+}
+
+.site-header-more-popover[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.site-header-more-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem;
+  font-family: var(--font-ui);
+  font-size: var(--type-ui-meta);
+  color: var(--site-text-secondary);
+  text-decoration: none;
+  transition:
+    color 0.15s,
+    background-color 0.15s;
+}
+
+.site-header-more-link:hover,
+.site-header-more-link:focus {
+  color: color-mix(
+    in srgb,
+    var(--site-text-primary) 84%,
+    var(--site-text-secondary)
+  );
+  background: color-mix(in srgb, var(--site-nav-hover-bg) 58%, transparent);
+  text-decoration: none;
+}
+
+.site-header-more-link-active {
+  color: color-mix(
+    in srgb,
+    var(--site-text-primary) 84%,
+    var(--site-text-secondary)
+  );
+}
+
+.site-header-more-link-responsive,
+.site-header-more-divider-responsive {
+  display: none;
+}
+
+.site-header-more-divider {
+  height: 0;
+  margin: 0.35rem 0.75rem;
+  border-top: 0.5px solid
+    color-mix(in srgb, var(--site-divider) 60%, transparent);
+}
+
+/* --- Tiered responsive collapse ---------------------------------------- *
+ *
+ *   ≤960px — 5th+ inline link collapses into More (tier-lg)
+ *   ≤780px — also 4th collapses (tier-md)
+ *   ≤580px — also 3rd collapses (tier-sm)
+ * The first two links always stay inline. No hamburger on static export —
+ * at very narrow widths 2 inline links + More button is the floor.
+ */
+
+@media (max-width: 960px) {
+  .site-header-link-collapse-lg {
+    display: none;
+  }
+
+  .site-header-more-responsive-only.site-header-more-tier-lg {
+    display: inline-flex;
+  }
+
+  .site-header-more-link-show-lg {
+    display: flex;
+  }
+
+  .site-header-more-divider-responsive {
+    display: block;
+  }
+}
+
+@media (max-width: 780px) {
+  .site-header-link-collapse-md {
+    display: none;
+  }
+
+  .site-header-more-responsive-only.site-header-more-tier-md {
+    display: inline-flex;
+  }
+
+  .site-header-more-link-show-md {
+    display: flex;
+  }
+}
+
+@media (max-width: 580px) {
+  .site-header-link-collapse-sm {
+    display: none;
+  }
+
+  .site-header-more-responsive-only.site-header-more-tier-sm {
+    display: inline-flex;
+  }
+
+  .site-header-more-link-show-sm {
+    display: flex;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Footer
+ * ------------------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  color: var(--site-text-secondary);
+  font-size: var(--type-xs);
+  background-color: var(--site-page-bg);
+}
+
+.site-footer-inner {
+  border-top: 0.5px solid var(--site-divider);
+  padding-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.site-footer-content {
+  color: var(--site-text-secondary);
+}
+
+.site-footer-content p {
+  margin: 0 0 0.5em;
+}
+
+.site-footer-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-branding-credit {
+  margin-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  text-align: center;
+  color: var(--site-text-secondary);
+  font-size: var(--type-base);
+}
+
+.home-branding-credit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0.5px solid
+    color-mix(in srgb, var(--site-text-secondary) 45%, transparent);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.home-branding-credit a:hover,
+.home-branding-credit a:focus-visible {
+  color: var(--site-text-primary);
+  border-color: currentColor;
+}
+
+/* -------------------------------------------------------------------------
+ * Tufte content-width constraint
+ *
+ * Mirrors the main site's 55% rule: reading text occupies a narrow
+ * column inside the Tufte frame, leaving a wide right margin that
+ * would host sidenotes on the main site. Media (images, video, audio)
+ * is NOT included — galleries intentionally span the full frame so
+ * they can breathe.
+ *
+ * Mobile (<=760px): `--layout-content-width` collapses to 100% via
+ * tokens.css. Tablet: cap at 35rem for readability.
+ * ------------------------------------------------------------------------- */
+
+.section-header,
+.section-body,
+.post-card-title,
+.post-card-summary,
+.post-card-link-domain,
+.post-card-quote-content,
+.post-card-quote-attribution,
+.post-card-quote-commentary,
+.post-card-footer,
+.reply-title,
+.reply-body,
+.reply-link-domain,
+.reply-footer,
+.thread-title,
+.thread-body,
+.thread-link-domain,
+.thread-footer,
+.collection-directory,
+.pagination,
+.empty-state,
+.page-summary {
+  width: var(--layout-content-width);
+  max-width: 100%;
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  .section-header,
+  .section-body,
+  .post-card-title,
+  .post-card-summary,
+  .post-card-link-domain,
+  .post-card-quote-content,
+  .post-card-quote-attribution,
+  .post-card-quote-commentary,
+  .post-card-footer,
+  .reply-title,
+  .reply-body,
+  .reply-link-domain,
+  .reply-footer,
+  .thread-title,
+  .thread-body,
+  .thread-link-domain,
+  .thread-footer,
+  .collection-directory,
+  .pagination,
+  .empty-state,
+  .page-summary {
+    width: min(100%, 35rem);
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Section headers
+ * ------------------------------------------------------------------------- */
+
+.section-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--site-border-light);
+}
+
+.section-title {
+  margin: 0 0 0.25em;
+}
+
+.section-summary {
+  margin: 0;
+  color: var(--site-reading-meta);
+  font-size: var(--type-secondary);
+}
+
+.section-meta {
+  margin: 0.5em 0 0;
+  color: var(--site-reading-meta);
+  font-size: var(--type-sm);
+}
+
+/* -------------------------------------------------------------------------
+ * Post list + post cards
+ * ------------------------------------------------------------------------- */
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-xl) * 1.25);
+}
+
+.post-list-pinned {
+  margin-bottom: calc(var(--space-xl) * 1.25);
+  padding-bottom: calc(var(--space-xl) * 1.25);
+  border-bottom: 1px solid var(--site-border-light);
+}
+
+/* Decorative divider between posts in a timeline feed. Mirrors the main
+   site's `hr.feed-divider`: a trio of small chevron marks masked from the
+   current text color, so it picks up the theme automatically.
+   `margin-left` centers the divider within the 55% reading column so it
+   visually sits at the middle of the post-card text stack. */
+hr.feed-divider {
+  border: none;
+  width: 30px;
+  height: 9px;
+  margin: 0;
+  margin-left: calc(var(--layout-content-width) / 2 - 15px);
+  color: var(--site-feed-divider-color);
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45 13'%3E%3Cpath fill='black' transform='translate(0,0) rotate(90 6 6.5)' d='M6.765.5.177 6.093l2.61 5.966 8.39-3.17L6.765.5Z'/%3E%3Cpath fill='black' transform='translate(16,0) rotate(100 6 6.5)' d='M6.765.5.177 6.093l2.61 5.966 8.39-3.17L6.765.5Z'/%3E%3Cpath fill='black' transform='translate(32,0) rotate(80 6 6.5)' d='M6.765.5.177 6.093l2.61 5.966 8.39-3.17L6.765.5Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45 13'%3E%3Cpath fill='black' transform='translate(0,0) rotate(90 6 6.5)' d='M6.765.5.177 6.093l2.61 5.966 8.39-3.17L6.765.5Z'/%3E%3Cpath fill='black' transform='translate(16,0) rotate(100 6 6.5)' d='M6.765.5.177 6.093l2.61 5.966 8.39-3.17L6.765.5Z'/%3E%3Cpath fill='black' transform='translate(32,0) rotate(80 6 6.5)' d='M6.765.5.177 6.093l2.61 5.966 8.39-3.17L6.765.5Z'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.post-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.post-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--feed-note-title-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--feed-note-title-leading);
+  margin: 0;
+  color: var(--site-reading-title);
+}
+
+.post-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card-title a:hover,
+.post-card-title a:focus {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.post-card-summary {
+  margin: 0;
+  color: var(--site-reading-body);
+}
+
+.post-card > .post-card-summary :is(h1, h2),
+.post-card > .post-card-quote-commentary :is(h1, h2) {
+  font-size: calc(var(--type-content-body) * 1.12);
+  font-weight: var(--fw-medium);
+  margin-top: 1.45rem;
+  margin-bottom: 0.55rem;
+}
+
+.post-card > .post-card-summary :is(h3, h4),
+.post-card > .post-card-quote-commentary :is(h3, h4) {
+  font-size: var(--type-content-body);
+  font-weight: var(--fw-medium);
+  margin-top: 1.2rem;
+  margin-bottom: 0.45rem;
+}
+
+.post-card > .post-card-summary :is(h5, h6),
+.post-card > .post-card-quote-commentary :is(h5, h6) {
+  font-size: var(--type-secondary);
+  font-weight: var(--fw-medium);
+  color: var(--site-text-secondary);
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Link card domain row — shown ABOVE the title (matches main site's
+   `.feed-link-domain` pattern). Inline flex with icon + host text. */
+.post-card-link-domain,
+.thread-link-domain,
+.reply-link-domain {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 100%;
+  margin: 0 0 0.4rem 0;
+  font-family: var(--font-ui);
+  font-size: var(--type-ui-meta);
+  font-weight: var(--fw-regular);
+  line-height: 1.3;
+  color: var(--site-text-secondary);
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.18s ease;
+}
+
+.post-card-link-domain:hover,
+.post-card-link-domain:focus,
+.thread-link-domain:hover,
+.thread-link-domain:focus,
+.reply-link-domain:hover,
+.reply-link-domain:focus {
+  color: var(--site-text-primary);
+}
+
+.post-card-link-domain-icon {
+  width: 0.72rem;
+  height: 0.72rem;
+  flex-shrink: 0;
+}
+
+/* Slight extra breathing room below link-card titles to match main site. */
+.post-card-link-title,
+.thread-link-title,
+.reply-link-title {
+  text-wrap: pretty;
+}
+
+.post-card-link-title a,
+.thread-link-title a,
+.reply-link-title a {
+  text-decoration: none;
+}
+
+.post-card-link-title a:hover,
+.post-card-link-title a:focus,
+.thread-link-title a:hover,
+.thread-link-title a:focus,
+.reply-link-title a:hover,
+.reply-link-title a:focus {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.post-card-media,
+.reply-media,
+.thread-media {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.post-card-figure img,
+.reply-figure img,
+.thread-figure img {
+  display: block;
+  width: 100%;
+  border-radius: var(--media-radius);
+  border: 1px solid var(--site-media-outline);
+}
+
+.post-card-figure video,
+.reply-figure video,
+.thread-figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--media-radius);
+  border: 1px solid var(--site-media-outline);
+  background: #000;
+}
+
+.post-card-figure audio,
+.reply-figure audio,
+.thread-figure audio {
+  display: block;
+  width: 100%;
+}
+
+.post-card-figure-video a {
+  position: relative;
+  display: block;
+}
+
+.post-card-video-badge {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.125rem 0.5rem;
+  font-size: var(--type-xs);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.thread-file a,
+.reply-file a {
+  color: var(--site-link);
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------
+ * Quote format — decorative mark, serif body, attribution line
+ * ------------------------------------------------------------------------- */
+
+.post-card-quote {
+  position: static;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--site-reading-quote);
+  font-family: inherit;
+  font-style: normal;
+}
+
+/* Quote-format posts have their own decorative `.post-card-quote-mark`
+   SVG inside the blockquote — suppress the global blockquote icon. */
+.post-card-quote::before {
+  content: none;
+}
+
+.post-card-quote-mark {
+  display: block;
+  position: relative;
+  width: 1.7rem;
+  margin-bottom: -0.1rem;
+  margin-left: -0.04rem;
+  line-height: 0;
+  pointer-events: none;
+  color: color-mix(in srgb, var(--site-accent) 14%, var(--site-divider));
+  opacity: 0.66;
+}
+
+.post-card-quote-mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.post-card-quote-content {
+  font-family: var(--font-serif);
+  color: var(--site-text-primary);
+  font-size: var(--type-content-quote);
+  line-height: var(--type-content-quote-leading);
+  white-space: pre-line;
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.post-card-quote-attribution {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: 0.95rem;
+  color: var(--site-text-secondary);
+  font-family: var(--font-ui);
+  font-size: var(--type-ui-meta);
+  font-style: normal;
+  line-height: 1.3;
+}
+
+.post-card-quote-attribution::before {
+  content: "";
+  width: 0.9rem;
+  height: 1px;
+  background: color-mix(
+    in srgb,
+    var(--site-text-secondary) 38%,
+    var(--site-divider)
+  );
+}
+
+.post-card-quote-source {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--site-text-secondary) 55%,
+    transparent
+  );
+  text-underline-offset: 3px;
+}
+
+.post-card-quote-source:hover,
+.post-card-quote-source:focus {
+  color: var(--site-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.post-card-quote-commentary {
+  position: relative;
+  margin-top: 1.1rem;
+  padding-top: 0.95rem;
+  color: color-mix(
+    in srgb,
+    var(--site-text-secondary) 84%,
+    var(--site-text-primary)
+  );
+  text-wrap: pretty;
+}
+
+.post-card-quote-commentary::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--site-divider) 48%, transparent) 16%,
+    color-mix(in srgb, var(--site-divider) 78%, transparent) 50%,
+    color-mix(in srgb, var(--site-divider) 48%, transparent) 84%,
+    transparent 100%
+  );
+}
+
+.post-card-quote-commentary.prose > :first-child {
+  margin-top: 0;
+}
+
+.post-card-quote-commentary.prose > :last-child {
+  margin-bottom: 0;
+}
+
+.post-card-quote-commentary p {
+  margin: 0;
+}
+
+.post-card-quote-commentary p + p,
+.post-card-quote-commentary ul,
+.post-card-quote-commentary ol,
+.post-card-quote-commentary blockquote,
+.post-card-quote-commentary pre {
+  margin-top: 0.55rem;
+}
+
+/* Fade the post meta on quote cards so the quote body stays visually primary. */
+.post-card-quote ~ .post-card-footer,
+.post-card-quote-commentary + .post-card-footer {
+  opacity: 0.72;
+}
+
+/* -------------------------------------------------------------------------
+ * Post footer — meta (featured, time, external link, collections, pinned)
+ * ------------------------------------------------------------------------- */
+
+.post-card-footer,
+.reply-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-height: 2rem;
+  font-size: var(--type-ui-hint);
+}
+
+.post-footer-detail {
+  margin-top: 24px;
+  /* Match the feed/reply footer size so the root post's footer doesn't
+     visually dominate. Main site uses a larger size because every post
+     on the detail page is rendered at detail size; here only the root
+     post gets this class, which otherwise creates a mismatch with the
+     replies below. */
+  font-size: var(--type-ui-hint);
+  color: var(--site-text-secondary);
+}
+
+.post-footer-meta {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+  font-family: var(--font-ui);
+  line-height: 1.35;
+  color: var(--site-text-secondary);
+}
+
+.post-footer-meta time {
+  font-size: inherit;
+  color: inherit;
+}
+
+.post-footer-featured {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(
+    in srgb,
+    var(--search-mark-color) 72%,
+    var(--site-text-secondary)
+  );
+  flex-shrink: 0;
+}
+
+.post-footer-featured svg {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.9;
+}
+
+.post-footer-link {
+  color: var(--site-text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.post-footer-link:hover,
+.post-footer-link:focus {
+  color: var(--site-text-primary);
+  text-decoration: underline;
+}
+
+.post-footer-external-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.6rem;
+  color: var(--site-text-secondary);
+  text-decoration: none;
+  transition:
+    color 0.18s ease,
+    background-color 0.16s ease;
+  flex-shrink: 0;
+}
+
+.post-footer-external-link:hover,
+.post-footer-external-link:focus {
+  color: var(--site-text-primary);
+}
+
+.post-footer-external-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.post-collection-tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+  color: var(--site-text-secondary);
+}
+
+.post-collection-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+  max-width: min(100%, 22ch);
+}
+
+.post-collection-tag:hover,
+.post-collection-tag:focus {
+  color: var(--site-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.post-collection-tag-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-card-pin {
+  font-size: var(--type-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--type-label-tracking);
+  color: var(--site-accent);
+  border: 1px solid var(--site-accent);
+  padding: 0.1em 0.5em;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------------------
+ * Thread preview (list pages: root context + hero latest reply)
+ *
+ * Mirrors the main site's `.thread-group.thread-group-preview` layout:
+ * content sits flush-left inside the preview, and the vertical rail +
+ * dot markers are positioned OUTSIDE the content (overflowing into the
+ * container's left gutter) via a negative `left` on the rail/dots.
+ * ------------------------------------------------------------------------- */
+
+.thread-preview {
+  /* Rail position: negative = overflow outside content. Mirrors
+     `--site-thread-rail-line-left` on the main site. */
+  --thread-rail-left: -27px;
+  --thread-rail-width: 1px;
+  --thread-rail-indent: 0px;
+  --thread-dot-size: 10px;
+  --thread-dot-ring-width: 2px;
+  --thread-dot-border-width: 2px;
+  --thread-hero-dot-size: 14px;
+  --thread-hero-dot-border-width: 3px;
+  --thread-item-spacing: 0.35rem;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-left: var(--thread-rail-indent);
+}
+
+@media (max-width: 760px) {
+  .thread-preview {
+    --thread-rail-left: -11px;
+    --thread-rail-indent: 8px;
+  }
+}
+
+/* Continuous vertical rail — subtle gradient so the line fades into
+   whitespace at the top and tail. Sits outside the content via negative
+   `left`. */
+.thread-preview::before {
+  content: "";
+  position: absolute;
+  left: var(--thread-rail-left);
+  top: 0;
+  bottom: 0;
+  width: var(--thread-rail-width);
+  background: linear-gradient(
+    180deg,
+    transparent 0,
+    color-mix(in srgb, var(--site-threadline) 85%, transparent) 8%,
+    color-mix(in srgb, var(--site-threadline) 55%, transparent) 100%
+  );
+  pointer-events: none;
+}
+
+.thread-preview-context {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Match runtime `.thread-group-preview .thread-item` which uses
+     `padding: var(--site-thread-item-spacing) 0` — adjacent items have
+     2x the token between them, so the flex `gap` here is 2x to match. */
+  gap: calc(var(--site-thread-item-spacing) * 2);
+  margin: 0;
+  padding: 0;
+  border-left: 0;
+}
+
+/* Individual entry in a thread preview — wraps a full `.post-card` so
+   the root, second, and penultimate replies render with their own
+   title/body/footer. Dot marker sits on the rail at the card's
+   vertical midpoint. */
+.thread-preview .thread-item {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.thread-preview .thread-item::before {
+  content: "";
+  position: absolute;
+  left: calc(
+    var(--thread-rail-left) + var(--thread-rail-width) / 2 -
+      var(--thread-dot-size) / 2 - var(--thread-rail-indent)
+  );
+  top: 1.4rem;
+  width: var(--thread-dot-size);
+  height: var(--thread-dot-size);
+  border-radius: 50%;
+  background-color: var(--site-threadline);
+  border: var(--thread-dot-border-width) solid var(--site-page-bg);
+  box-shadow: 0 0 0 var(--thread-dot-ring-width) var(--site-thread-dot-ring);
+  z-index: 1;
+}
+
+/* Gap "N more posts" row has no card so we place the marker at its
+   vertical midpoint instead of the card's top area. Swap the single dot
+   for a short column of small beads (a vertical "⋮") so the rail visibly
+   "skips" a run of posts — mirrors the main site's `.thread-item-gap`. */
+.thread-preview .thread-item-gap {
+  display: flex;
+  align-items: center;
+  padding: 0.15rem 0 0.35rem;
+}
+
+.thread-preview .thread-item-gap::before {
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(
+    var(--thread-rail-left) + var(--thread-rail-width) / 2 - 2px -
+      var(--thread-rail-indent)
+  );
+  width: 4px;
+  height: 24px;
+  border: 0;
+  border-radius: 0;
+  background: radial-gradient(
+    circle,
+    var(--site-threadline) 1.75px,
+    transparent 2px
+  );
+  background-size: 4px 8px;
+  background-repeat: repeat-y;
+  background-position: center top;
+  box-shadow: none;
+}
+
+/* Hidden-posts count — a calm route into the thread, matching the main
+   site's `.thread-gap-link`: styled like a sibling of the Show more toggle
+   with a small right-pointing chevron rather than an underline, firming up
+   to the primary text colour on hover. */
+.thread-preview-gap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  margin: 0.15rem 0;
+  padding: 0.25rem 0;
+  color: var(--site-text-secondary);
+  font-size: var(--type-thread-context-meta);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.thread-preview-gap::after {
+  content: "";
+  width: 0.36em;
+  height: 0.36em;
+  border: 1.5px solid currentColor;
+  border-left: 0;
+  border-bottom: 0;
+  opacity: 0.65;
+  transform: rotate(45deg);
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.thread-preview-gap:hover,
+.thread-preview-gap:focus {
+  color: var(--site-text-primary);
+}
+
+.thread-preview-gap:hover::after,
+.thread-preview-gap:focus::after {
+  opacity: 1;
+  transform: translateX(2px) rotate(45deg);
+}
+
+/* Hero (latest reply) row: spacing above and below matches the main
+   site's `.thread-item-hero`, and the dot is larger + accent-colored. */
+.thread-preview-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: calc(var(--space-xl) * 1.1);
+  margin-top: 0;
+}
+
+/* Featured timelines keep Post-level selection while grouping by Thread.
+   Selected Root/Child Posts use the accent marker; context Posts retain the
+   neutral rail marker. */
+.thread-preview .thread-item-featured::before {
+  left: calc(
+    var(--thread-rail-left) + var(--thread-rail-width) / 2 -
+      var(--thread-hero-dot-size) / 2 - var(--thread-rail-indent)
+  );
+  width: var(--thread-hero-dot-size);
+  height: var(--thread-hero-dot-size);
+  background-color: var(--site-accent);
+  border-width: var(--thread-hero-dot-border-width);
+}
+
+.thread-preview .thread-item-hero::before {
+  left: calc(
+    var(--thread-rail-left) + var(--thread-rail-width) / 2 -
+      var(--thread-hero-dot-size) / 2 - var(--thread-rail-indent)
+  );
+  top: calc(var(--space-xl) * 1.1 + 1.4rem);
+  width: var(--thread-hero-dot-size);
+  height: var(--thread-hero-dot-size);
+  background-color: var(--site-accent);
+  border-width: var(--thread-hero-dot-border-width);
+}
+
+.thread-preview-thread-link {
+  align-self: flex-start;
+  font-size: var(--type-sm);
+  color: var(--site-reading-meta);
+  text-decoration: none;
+}
+
+.thread-preview-thread-link:hover,
+.thread-preview-thread-link:focus {
+  color: var(--site-text-primary);
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------
+ * Thread (single post page with inline replies)
+ * ------------------------------------------------------------------------- */
+
+.thread {
+  /* Rail variables match `.thread-preview` so the detail-page rail
+     shares the same visual position. */
+  --thread-rail-left: -27px;
+  --thread-rail-width: 1px;
+  --thread-rail-indent: 0px;
+  --thread-dot-size: 10px;
+  --thread-dot-ring-width: 2px;
+  --thread-dot-border-width: 2px;
+  --thread-hero-dot-size: 14px;
+  --thread-hero-dot-border-width: 3px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-left: var(--thread-rail-indent);
+}
+
+@media (max-width: 760px) {
+  .thread {
+    --thread-rail-left: -11px;
+    --thread-rail-indent: 8px;
+  }
+}
+
+/* Continuous vertical rail spanning the entire thread (root post + replies).
+   Only shown when the root post actually has replies — a lone post should
+   not have a rail or dot. Matches `.thread-preview`. */
+.thread-has-replies::before {
+  content: "";
+  position: absolute;
+  left: var(--thread-rail-left);
+  top: 0;
+  bottom: 0;
+  width: var(--thread-rail-width);
+  background: linear-gradient(
+    180deg,
+    transparent 0,
+    color-mix(in srgb, var(--site-threadline) 85%, transparent) 8%,
+    color-mix(in srgb, var(--site-threadline) 55%, transparent) 100%
+  );
+  pointer-events: none;
+}
+
+/* Dot marker for each post in the thread (root + replies). Shown only when
+   there are replies so a solo post doesn't get an orphaned dot. */
+.thread .thread-item {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.thread-has-replies .thread-item::before {
+  content: "";
+  position: absolute;
+  left: calc(
+    var(--thread-rail-left) + var(--thread-rail-width) / 2 -
+      var(--thread-dot-size) / 2 - var(--thread-rail-indent)
+  );
+  top: 1.4rem;
+  width: var(--thread-dot-size);
+  height: var(--thread-dot-size);
+  border-radius: 50%;
+  background-color: var(--site-threadline);
+  border: var(--thread-dot-border-width) solid var(--site-page-bg);
+  box-shadow: 0 0 0 var(--thread-dot-ring-width) var(--site-thread-dot-ring);
+  z-index: 1;
+}
+
+.thread-item-root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.thread-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.thread-title {
+  font-family: var(--font-heading);
+  font-size: var(--type-content-display);
+  font-weight: var(--type-display-weight);
+  line-height: var(--type-display-leading);
+  margin: 0;
+  color: var(--site-reading-title);
+}
+
+.thread-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.thread-title a:hover,
+.thread-title a:focus {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.thread-body {
+  font-size: var(--type-content-body);
+  line-height: var(--type-body-leading);
+  color: var(--site-reading-body);
+}
+
+.thread-body > :first-child {
+  margin-top: 0;
+}
+
+.thread-body > :last-child {
+  margin-bottom: 0;
+}
+
+.thread-replies {
+  /* Flex container for replies. The rail and dots are provided by
+     `.thread::before` and `.thread-item::before` so replies stay visually
+     connected to the root post. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* -------------------------------------------------------------------------
+ * Replies
+ * ------------------------------------------------------------------------- */
+
+.reply {
+  scroll-margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.reply:target {
+  background-color: var(--search-mark-bg);
+  border-radius: 0.25rem;
+  padding: 0.75rem 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.reply:target::before {
+  background-color: var(--site-accent);
+}
+
+.reply-title {
+  font-family: var(--font-heading);
+  font-size: var(--type-content-subtitle);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-leading);
+  margin: 0;
+  color: var(--site-reading-heading);
+}
+
+.reply-body {
+  color: var(--site-reading-body);
+}
+
+.reply-body > :first-child {
+  margin-top: 0;
+}
+
+.reply-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------------------
+ * Collections page
+ *
+ * Mirrors the main site's authenticated-less collections view
+ * (`ui/pages/CollectionsPage.tsx` + `ui/shared/CollectionDirectory.tsx`):
+ * a page-intro block with count, then a two-column grid per row where a
+ * monospace sequence label sits beside the collection title, description,
+ * and entry/activity meta.
+ * ------------------------------------------------------------------------- */
+
+.collections-page-shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: var(--layout-content-width);
+  max-width: 100%;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  .collections-page-shell {
+    width: min(100%, 35rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .collections-page-shell {
+    width: 100%;
+  }
+}
+
+.collections-page-header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 0.2rem;
+}
+
+.collections-page-heading {
+  min-width: 0;
+  flex: 1 1 18rem;
+}
+
+.page-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 0.1rem;
+}
+
+.page-intro-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.page-intro-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--type-title, 2rem);
+  font-weight: var(--type-heading-weight);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--site-text-primary);
+}
+
+.page-intro-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.page-intro-meta,
+.page-intro-description {
+  margin: 0;
+  color: var(--site-text-secondary);
+  font-family: var(--font-ui);
+  font-size: var(--type-secondary);
+  line-height: 1.3;
+}
+
+.collection-directory {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.collection-directory-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.95rem 0;
+  background: transparent;
+  text-decoration: none;
+}
+
+.collection-directory-main {
+  --collection-directory-sequence-width: 3.5ch;
+  --collection-directory-title-line-height: 1.18;
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  grid-template-columns: var(--collection-directory-sequence-width) minmax(
+      0,
+      1fr
+    );
+  align-items: start;
+  column-gap: 0.8rem;
+  row-gap: 0.25rem;
+}
+
+.collection-directory-sequence {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  width: var(--collection-directory-sequence-width);
+  padding-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--collection-directory-title-line-height);
+  letter-spacing: 0.14em;
+  color: var(--site-text-secondary);
+}
+
+.collection-directory-title-row {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.collection-directory-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.collection-directory-title-link:hover,
+.collection-directory-title-link:focus-visible {
+  color: var(--site-text-primary);
+}
+
+.collection-directory-title-link:hover .collection-directory-title,
+.collection-directory-title-link:focus-visible .collection-directory-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.collection-directory-title {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-heading);
+  font-size: var(--type-content-body);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--collection-directory-title-line-height);
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.collection-directory-title-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.95rem;
+  min-width: 0.95rem;
+  height: 0.95rem;
+  color: var(--site-text-secondary);
+  transition: color 0.15s ease;
+}
+
+.collection-directory-title-link:hover .collection-directory-title-marker,
+.collection-directory-title-link:focus-visible
+  .collection-directory-title-marker {
+  color: var(--site-text-primary);
+}
+
+.collection-directory-description {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0;
+  color: color-mix(in srgb, var(--site-text-secondary) 80%, transparent);
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  line-height: 1.45;
+}
+
+.collection-directory-description :where(p) {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* Links inside the description inherit the description color so they sit in
+   the same gray tone as the copy around them (matches the main site's
+   `.prose { --tw-prose-links: var(--site-content-link); }` which resolves
+   to `inherit`). The underline stays, drawn in currentColor. */
+.collection-directory-description :where(a) {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.15em;
+}
+
+.collection-directory-description :where(a:hover),
+.collection-directory-description :where(a:focus-visible) {
+  color: var(--site-text-primary);
+}
+
+.collection-directory-description :where(p:first-child) {
+  margin-top: 0;
+}
+
+.collection-directory-description :where(p:last-child) {
+  margin-bottom: 0;
+}
+
+.collection-directory-description + .collection-directory-summary {
+  grid-row: 3;
+}
+
+.collection-directory-summary {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  align-items: center;
+  gap: 0.2rem 0.5rem;
+  margin: 0;
+  color: var(--site-reading-meta);
+  font-family: var(--font-ui);
+  font-size: var(--type-sm);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.collection-directory-meta {
+  flex: 0 0 auto;
+  color: inherit;
+}
+
+.collection-directory-meta-separator {
+  flex: 0 0 auto;
+  color: color-mix(in srgb, var(--site-divider) 88%, transparent);
+}
+
+.collection-directory-updated {
+  flex: 0 0 auto;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.collection-directory-divider {
+  padding: 1.5rem 0 0.85rem;
+}
+
+.collection-directory-divider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.collection-directory-divider-text {
+  font-family: var(--font-heading);
+  font-size: var(--type-secondary);
+  letter-spacing: 0;
+  font-style: normal;
+  white-space: nowrap;
+  color: var(--site-text-secondary);
+}
+
+.collection-directory-divider-line {
+  flex: 1;
+  height: 1px;
+  border: none;
+  margin: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--site-divider) 100%, transparent),
+    color-mix(in srgb, var(--site-divider) 54%, transparent) 34%,
+    transparent 86%
+  );
+}
+
+/* -------------------------------------------------------------------------
+ * Pagination
+ * ------------------------------------------------------------------------- */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  font-size: var(--type-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.pagination-link {
+  color: var(--site-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.pagination-link:hover,
+.pagination-link:focus {
+  color: var(--site-text-primary);
+}
+
+.pagination-link.is-disabled {
+  color: color-mix(in srgb, var(--site-text-secondary) 50%, transparent);
+  cursor: default;
+  text-decoration: none;
+}
+
+.pagination-current {
+  color: var(--site-text-primary);
+  font-weight: var(--fw-medium);
+}
+
+.pagination-ellipsis {
+  color: var(--site-text-secondary);
+}
+
+/* -------------------------------------------------------------------------
+ * Empty states + utility
+ * ------------------------------------------------------------------------- */
+
+.empty-state {
+  color: var(--site-reading-meta);
+  font-style: italic;
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+
+.page,
+.section {
+  display: block;
+}
+
+.page-summary,
+.section-summary {
+  font-size: var(--type-secondary);
+  color: var(--site-reading-meta);
+}
+
+/* -------------------------------------------------------------------------
+ * Wider viewport refinements
+ * ------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .site-main {
+    padding-top: calc(var(--space-xl) * 1.5);
+    padding-bottom: calc(var(--space-xl) * 1.5);
+  }
+
+  .post-card-media,
+  .thread-media,
+  .reply-media {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .post-card-media:has(> :only-child),
+  .thread-media:has(> :only-child),
+  .reply-media:has(> :only-child) {
+    grid-template-columns: 1fr;
+  }
+}

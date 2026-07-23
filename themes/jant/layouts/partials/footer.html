@@ -1,0 +1,32 @@
+{{- $jant := hugo.Data.jant -}}
+{{- $footerHtml := "" -}}
+{{- with $jant -}}{{- with .site_footer_html -}}{{- $footerHtml = . -}}{{- end -}}{{- end -}}
+{{- $showBranding := false -}}
+{{- with $jant -}}{{- if eq .show_jant_branding_on_home true -}}{{- $showBranding = true -}}{{- end -}}{{- end -}}
+{{- $navFooterItems := slice -}}
+{{- with $jant -}}{{- range .nav -}}{{- if eq .placement "footer" -}}{{- $navFooterItems = $navFooterItems | append . -}}{{- end -}}{{- end -}}{{- end -}}
+{{- $hasFooter := or $navFooterItems $footerHtml -}}
+{{- if $hasFooter -}}
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    {{- if $navFooterItems -}}
+      <nav class="site-footer-nav" aria-label="Footer">
+        <ul class="site-footer-nav-list">
+          {{- range $navFooterItems -}}
+            {{- $isExternal := or (hasPrefix .url "http://") (hasPrefix .url "https://") -}}
+            <li><a href="{{ .url }}"{{ if $isExternal }} rel="noopener noreferrer" target="_blank"{{ end }}>{{ .label }}</a></li>
+          {{- end -}}
+        </ul>
+      </nav>
+    {{- end -}}
+    {{- with $footerHtml -}}
+      <div class="site-footer-content">{{ . | safeHTML }}</div>
+    {{- end -}}
+  </div>
+</footer>
+{{- end -}}
+{{- if and $showBranding $.IsHome -}}
+<footer class="home-branding-credit">
+  Build with <a href="https://jant.me" rel="noopener noreferrer" target="_blank">Jant</a>
+</footer>
+{{- end -}}

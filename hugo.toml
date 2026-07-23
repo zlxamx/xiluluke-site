@@ -1,0 +1,49 @@
+baseURL = "https://xiluluke.com/"
+title = "LuxiBlog"
+languageCode = "zh-hans"
+defaultContentLanguage = "zh-hans"
+theme = "jant"
+paginate = 50
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
+
+[permalinks]
+  post = "/:slug/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html"]
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediaType = "application/atom+xml"
+    baseName = "index"
+    isPlainText = true
+    rel = "alternate"
+
+[mediaTypes]
+  [mediaTypes."application/atom+xml"]
+    suffixes = ["xml"]
+
+[params]
+  description = "你好，这里是希路路克，一个辩证的极简主义者。"
+  main_rss_feed = "featured"
+  public_api_enabled = true
+  rss_feeds_enabled = true
+  show_jant_branding_on_home = false
+  show_header_avatar = true
+  noindex = false
+  theme_id = "frost"
+  default_theme_id = "tufte"
+  font_theme_id = "classic"
+  theme_mode = "auto"
+  page_size = 50
+  archive_page_size = 50
+  rss_feed_limit = 50
+  site_avatar_url = "https://media.jant.me/media/sit_01ks2arkx6endsn2dxx310ge9r/assets/avatar/med_01ktz8ag2wecrvfpac1dfq0463.png"
+  favicon_version = "202606130107"

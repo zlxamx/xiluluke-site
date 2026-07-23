@@ -1,0 +1,159 @@
+format = "jant-site"
+version = 1
+generated_at = "2026-07-23T13:34:38.000Z"
+site_name = "LuxiBlog"
+site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
+site_language = "zh-Hans"
+main_rss_feed = "featured"
+public_api_enabled = true
+rss_feeds_enabled = true
+show_jant_branding_on_home = false
+show_header_avatar = true
+noindex = false
+site_avatar_mode = "custom"
+favicon_mode = "custom"
+apple_touch_mode = "custom"
+theme_id = "frost"
+default_theme_id = "tufte"
+font_theme_id = "classic"
+theme_mode = "auto"
+page_size = 50
+archive_page_size = 50
+rss_feed_limit = 50
+favicon_path = "/favicon.ico"
+apple_touch_icon_path = "/apple-touch-icon.png"
+site_avatar_url = "https://media.jant.me/media/sit_01ks2arkx6endsn2dxx310ge9r/assets/avatar/med_01ktz8ag2wecrvfpac1dfq0463.png"
+favicon_version = "202606130107"
+site_footer_html = "<p>公众号：希路路克</p>"
+site_footer_markdown = "公众号：希路路克"
+
+[[nav]]
+type = "system"
+label = "Latest"
+url = "/"
+system_key = "latest"
+placement = "header"
+
+[[nav]]
+type = "system"
+label = "Archive"
+url = "/archive/"
+system_key = "archive"
+placement = "header"
+
+[[nav]]
+type = "link"
+label = "Products"
+url = "/products"
+system_key = ""
+placement = "header"
+
+[[nav]]
+type = "link"
+label = "About"
+url = "/about"
+system_key = ""
+placement = "header"
+
+[[nav]]
+type = "system"
+label = "Featured"
+url = "/featured/"
+system_key = "featured"
+placement = "more"
+
+[[nav]]
+type = "system"
+label = "Collections"
+url = "/collections/"
+system_key = "collections"
+placement = "more"
+
+[[nav]]
+type = "system"
+label = "Feed"
+url = "/featured/index.xml"
+system_key = "rss"
+placement = "more"
+
+[[directory]]
+type = "collection"
+sequence = "00"
+slug = "new-life"
+title = "New life"
+entry_count = 5
+recent_activity_label = "Jun 20"
+recent_activity_iso = "2026-06-20T10:12:54.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "01"
+slug = "my-post"
+title = "My Post"
+entry_count = 1
+recent_activity_label = "May 20"
+recent_activity_iso = "2026-05-20T09:25:24.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "02"
+slug = "minimalism"
+title = "极简主义"
+entry_count = 66
+recent_activity_label = "May 20"
+recent_activity_iso = "2026-05-20T00:00:00.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "03"
+slug = "essays"
+title = "随笔与思考"
+entry_count = 35
+recent_activity_label = "Jul 2"
+recent_activity_iso = "2026-07-02T13:41:14.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "04"
+slug = "life-health"
+title = "生活与健康"
+entry_count = 25
+recent_activity_label = "May 26"
+recent_activity_iso = "2026-05-26T11:38:49.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "05"
+slug = "film-tv"
+title = "影视"
+entry_count = 14
+recent_activity_label = "Jul 11"
+recent_activity_iso = "2026-07-11T08:29:33.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "06"
+slug = "weekly"
+title = "周刊"
+entry_count = 18
+recent_activity_label = "3d ago"
+recent_activity_iso = "2026-07-20T11:36:38.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "07"
+slug = "digital-life"
+title = "数字生活"
+entry_count = 12
+recent_activity_label = "Jun 15"
+recent_activity_iso = "2026-06-15T11:40:20.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "08"
+slug = "products"
+title = "产品"
+description_html = "<p>我用 vibe coding 做的小产品合集。</p>"
+entry_count = 2
+recent_activity_label = "1d ago"
+recent_activity_iso = "2026-07-22T12:01:29.000Z"
