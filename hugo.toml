@@ -1,6 +1,6 @@
-baseURL = "https://xiluluke.com/"
+baseURL = "https://luxi.blog/"
 title = "LuxiBlog"
-locale = "zh-Hans"
+languageCode = "zh-hans"
 defaultContentLanguage = "zh-hans"
 theme = "jant"
 paginate = 50
@@ -37,7 +37,7 @@ disableKinds = ['taxonomy', 'term']
   rss_feeds_enabled = true
   show_jant_branding_on_home = false
   show_header_avatar = true
-  noindex = false
+  noindex = true
   theme_id = "frost"
   default_theme_id = "tufte"
   font_theme_id = "classic"

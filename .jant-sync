@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "site_id": "sit_01ks2arkx6endsn2dxx310ge9r",
-  "site_host": "xiluluke.com",
+  "site_host": "luxi.blog",
   "created_at": 1784813679,
   "managed_globs": [
     "content/**",

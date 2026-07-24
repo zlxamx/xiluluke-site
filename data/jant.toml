@@ -1,6 +1,6 @@
 format = "jant-site"
 version = 1
-generated_at = "2026-07-23T13:34:38.000Z"
+generated_at = "2026-07-24T09:14:41.000Z"
 site_name = "LuxiBlog"
 site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
 site_language = "zh-Hans"
@@ -9,7 +9,7 @@ public_api_enabled = true
 rss_feeds_enabled = true
 show_jant_branding_on_home = false
 show_header_avatar = true
-noindex = false
+noindex = true
 site_avatar_mode = "custom"
 favicon_mode = "custom"
 apple_touch_mode = "custom"
