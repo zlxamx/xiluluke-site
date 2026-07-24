@@ -42,6 +42,18 @@
   {{- $writingDays := add (div (sub now.Unix $oldest.Date.Unix) 86400) 1 -}}
   {{- $projects := hugo.Data.luxi.projects -}}
   {{- $services := hugo.Data.luxi.services -}}
+  {{- $concerns := hugo.Data.luxi.concerns | default slice -}}
+  {{- $directory := hugo.Data.jant.directory | default slice -}}
+  {{- $homeCollections := slice -}}
+  {{- range ($homeConfig.featured_collections | default slice) -}}
+    {{- $collectionMatches := where $directory "slug" . -}}
+    {{- if gt (len $collectionMatches) 0 -}}
+      {{- $collection := index $collectionMatches 0 -}}
+      {{- if eq $collection.type "collection" -}}
+        {{- $homeCollections = $homeCollections | append $collection -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 
   <section class="home-hero editorial-wrap">
     <div class="home-volume"><span>VOL.{{ now.Format "06.01" }}</span><span>{{ now.Format "2006.01" }}</span></div>
@@ -91,6 +103,37 @@
       </div>
     </div>
   </section>
+
+  {{- if gt (len $homeCollections) 0 }}
+  <section class="home-collections editorial-wrap" id="collections">
+    <header>
+      <div>
+        <p class="editorial-kicker">Collections · 长期写作</p>
+        <h2>反复写下的</h2>
+      </div>
+      <a href="{{ "collections/" | relURL }}">查看全部 {{ len (where $directory "type" "collection") }} 个合集 →</a>
+    </header>
+    <div class="home-collection-list">
+      {{- range $index, $collection := $homeCollections }}
+        {{- $collectionPath := printf "/%s/" $collection.slug -}}
+        {{- $concernMatches := where $concerns "url" $collectionPath -}}
+        {{- $description := "" -}}
+        {{- if gt (len $concernMatches) 0 -}}
+          {{- $description = (index $concernMatches 0).summary -}}
+        {{- end -}}
+      <a class="home-collection-row" href="{{ $collectionPath | relURL }}">
+        <span>{{ printf "%02d" (add $index 1) }}</span>
+        <div>
+          <h3>{{ $collection.title }}</h3>
+          {{- with $description }}<p>{{ . }}</p>{{- end }}
+        </div>
+        <small>{{ $collection.entry_count }} ENTRIES</small>
+        <b aria-hidden="true">→</b>
+      </a>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
 
   <section class="home-catalog editorial-wrap" id="projects">
     <header><div><p class="editorial-kicker">Projects · 个人项目</p><h2>在做什么</h2></div><a href="{{ "products/" | relURL }}">查看全部 →</a></header>

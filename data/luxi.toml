@@ -3,6 +3,8 @@
 headline_slug = "jj19"
 # 首页“最近发布”中的固定推荐，按这里的顺序优先展示，其余位置自动补入最新公开文章。
 fixed_articles = []
+# 首页合集区，仅控制展示入口和顺序；文章数量与合集内容仍由 Jant 同步。
+featured_collections = ["minimalism", "essays", "weekly", "life-health"]
 
 [contact]
 wechat = "zlxamx"

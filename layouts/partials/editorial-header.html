@@ -4,6 +4,7 @@
     <a class="editorial-logo" href="{{ "/" | relURL }}">LuxiBlog</a>
     <nav aria-label="主要导航">
       <a href="{{ "archive/" | relURL }}"{{ if or (eq $path "/archive/") (eq .Type "post") }} aria-current="page"{{ end }}>文章</a>
+      <a href="{{ "collections/" | relURL }}"{{ if eq $path "/collections/" }} aria-current="page"{{ end }}>合集</a>
       <a href="{{ "seedraft/" | relURL }}"{{ if eq $path "/seedraft/" }} aria-current="page"{{ end }}>文芽 <span>SEEDRAFT</span></a>
       <a href="{{ "products/" | relURL }}"{{ if eq $path "/products/" }} aria-current="page"{{ end }}>产品</a>
       <a href="{{ "services/" | relURL }}"{{ if eq $path "/services/" }} aria-current="page"{{ end }}>服务</a>
