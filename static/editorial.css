@@ -230,6 +230,7 @@ body.editorial-site {
 .contact-action:last-child svg path { fill: currentColor; stroke: none; }
 .contact-action span { color: #858b92; font: 500 8px var(--lx-mono); letter-spacing: .08em; }
 .wechat-line { margin: 20px auto 0; padding: 7px 14px; color: #0d351e; background: #27bb67; font: 500 13px var(--lx-sans); }
+.wechat-line[hidden] { display: none; }
 .footer-bottom { display: flex; justify-content: space-between; margin-top: 82px; padding: 32px 0; border-top: 1px solid var(--lx-line); color: #858b92; font: 500 9px var(--lx-mono); letter-spacing: .08em; }
 .not-found { min-height: 640px; padding: 110px 0; }
 .not-found h1 { margin: 28px 0 18px; font: 600 clamp(54px, 7vw, 80px)/1.05 var(--lx-serif); letter-spacing: -.06em; }

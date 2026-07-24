@@ -60,10 +60,10 @@
           <span>GitHub</span>
         </a>
       </div>
-      <p class="wechat-line" data-wechat-line>微信搜索：zlxamx</p>
+      <p class="wechat-line" data-wechat-line aria-live="polite" hidden></p>
     </div>
     <div class="editorial-wrap footer-bottom"><p>Built with · Jant 内容系统与定制 Hugo 主题</p><p>© 2026 希路路克 · Designed in magazine style</p></div>
-    <script>document.querySelector("[data-copy-wechat]").addEventListener("click",function(){navigator.clipboard&&navigator.clipboard.writeText("zlxamx");document.querySelector("[data-wechat-line]").textContent="微信号已复制：zlxamx"})</script>
+    <script>document.querySelector("[data-copy-wechat]").addEventListener("click",function(){navigator.clipboard&&navigator.clipboard.writeText("zlxamx");var line=document.querySelector("[data-wechat-line]");line.hidden=false;line.textContent="微信号：zlxamx · 已复制"})</script>
   </footer>
 </body>
 </html>

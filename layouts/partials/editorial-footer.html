@@ -27,7 +27,7 @@
         <span>GitHub</span>
       </a>
     </div>
-    <p class="wechat-line" data-wechat-line>微信搜索：{{ $contact.wechat }}</p>
+    <p class="wechat-line" data-wechat-line aria-live="polite" hidden></p>
   </div>
   <div class="editorial-wrap footer-bottom">
     <p>Built with · Jant 内容系统与定制 Hugo 主题</p>
@@ -40,8 +40,8 @@
         if (navigator.clipboard) navigator.clipboard.writeText(id);
         var line = document.querySelector("[data-wechat-line]");
         if (line) {
-          line.textContent = "微信号已复制：" + id;
-          window.setTimeout(function () { line.textContent = "微信搜索：" + id; }, 2200);
+          line.hidden = false;
+          line.textContent = "微信号：" + id + " · 已复制";
         }
       });
     });
