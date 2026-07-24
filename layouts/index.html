@@ -42,6 +42,11 @@
   {{- $writingDays := add (div (sub now.Unix $oldest.Date.Unix) 86400) 1 -}}
   {{- $projects := hugo.Data.luxi.projects -}}
   {{- $services := hugo.Data.luxi.services -}}
+  {{- $covers := hugo.Data.luxi.covers | default dict -}}
+  {{- $leadCover := partial "post-cover.html" (dict "post" $lead "covers" $covers) -}}
+  {{- if not $leadCover -}}
+    {{- $leadCover = "images/feature-avatar.png" | relURL -}}
+  {{- end -}}
   {{- $concerns := hugo.Data.luxi.concerns | default slice -}}
   {{- $directory := hugo.Data.jant.directory | default slice -}}
   {{- $homeCollections := slice -}}
@@ -75,7 +80,7 @@
           <p>{{ $lead.Params.summary_text | plainify | truncate 190 }}</p>
           <footer><time>{{ $lead.Date.Format "2006 / 01 / 02" }}</time><a href="{{ $lead.RelPermalink }}">继续阅读 →</a></footer>
         </div>
-        <a class="home-feature-image" href="{{ $lead.RelPermalink }}"><img src="{{ "images/feature-avatar.png" | relURL }}" alt="希路路克"></a>
+        <a class="home-feature-image" href="{{ $lead.RelPermalink }}"><img src="{{ $leadCover }}" alt="" loading="eager"></a>
       </article>
     </div>
   </section>

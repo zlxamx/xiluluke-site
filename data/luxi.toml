@@ -6,6 +6,11 @@ fixed_articles = []
 # 首页合集区，仅控制展示入口和顺序；文章数量与合集内容仍由 Jant 同步。
 featured_collections = ["minimalism", "essays", "weekly", "life-health"]
 
+[covers]
+# 手工封面映射：键为文章 slug，值为图片 URL 或 static/ 下的站内路径。
+seedraft = "/images/seedraft-project.png"
+dialectics = "/images/dialectics-project.png"
+
 [contact]
 wechat = "zlxamx"
 email = "Seedraft@outlook.com"

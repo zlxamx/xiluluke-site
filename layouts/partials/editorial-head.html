@@ -1,5 +1,9 @@
 {{- $description := .Params.summary_text | default .Site.Params.description | default "希路路克的个人网站：正在做的，正在想的。" -}}
 {{- $socialImage := "images/seedraft-project.png" | absURL -}}
+{{- if eq .Type "post" -}}
+  {{- $postCover := partial "post-cover.html" (dict "post" . "covers" (hugo.Data.luxi.covers | default dict)) -}}
+  {{- if $postCover -}}{{- $socialImage = $postCover | absURL -}}{{- end -}}
+{{- end -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fbfcf8">

@@ -1,0 +1,33 @@
+{{- $post := .post -}}
+{{- $covers := .covers | default dict -}}
+{{- $slug := $post.Params.slug | default $post.Slug -}}
+{{- $cover := index $covers $slug | default "" -}}
+
+{{- if not $cover -}}
+  {{- $media := $post.Params.media | default slice -}}
+  {{- $images := where $media "kind" "image" -}}
+  {{- if gt (len $images) 0 -}}
+    {{- $cover = (index $images 0).src | default "" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if not $cover -}}
+  {{- $matches := findRE `(?i)<img[^>]+src=["'][^"']+["']` $post.Content 1 -}}
+  {{- if gt (len $matches) 0 -}}
+    {{- $cover = replaceRE `(?i).*src=["']([^"']+)["'].*` "$1" (index $matches 0) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if and $cover (not (or (hasPrefix $cover "https://") (hasPrefix $cover "http://") (hasPrefix $cover "//"))) -}}
+  {{- if hasPrefix $cover "/" -}}
+    {{- if not (fileExists (printf "static%s" $cover)) -}}{{- $cover = "" -}}{{- end -}}
+  {{- else -}}
+    {{- with $post.Resources.GetMatch $cover -}}
+      {{- $cover = .RelPermalink -}}
+    {{- else -}}
+      {{- $cover = "" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $cover -}}
