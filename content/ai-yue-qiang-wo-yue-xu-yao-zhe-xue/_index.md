@@ -2,6 +2,7 @@
 id: "pst_01ky9pfjzvenbrert8r35c8mm4"
 title: "AI越强，我越需要哲学"
 date: "2026-07-24T09:14:41.000Z"
+updated: "2026-07-24T09:14:49.000Z"
 slug: "ai-yue-qiang-wo-yue-xu-yao-zhe-xue"
 type: "post"
 format: "note"
@@ -9,6 +10,10 @@ status: "published"
 visibility: "public"
 summary_text: "今天在读《哈萨比斯：谷歌AI之脑》，这算是我读的第一本AI圈内人物的传记，在此之前我从来没听过他的名字（或者说我已经忘了），但已经用了很久他的团队所创造的产品——Gemini。 除了Gemini以外，我至少有两次听到他或者见他与他强关联的事情，距今最近的一件事情是2024年的诺贝尔医学奖，我记得当时的新闻是医学奖颁给了一个研究AI的科学家，而不是一个医学家。 而再往前，就要追溯到2017年的上半年，准确的来说那时候我正在面临中考。印象里，一个叫做阿尔法狗的机器人战胜了一个棋手，仅此而已。 如今翻开《阿萨比斯：谷歌AI之脑》，在序里是这样来说这件事情的： “2016年，DeepMind 研发的 AlphaGo 击败韩国棋手李世石；次年，它又战胜了当时世界排名第一的中国天才棋手柯洁。”"
 rating: 5
+featured_at: "2026-07-24T09:14:49.000Z"
+featured_post_ids:
+  - "pst_01ky9pfjzvenbrert8r35c8mm4"
+featured_sort_at: "2026-07-24T09:14:41.000Z"
 media:
   - id: "med_01ky9pfadwenbrert17rdcs9fm"
     kind: "image"
