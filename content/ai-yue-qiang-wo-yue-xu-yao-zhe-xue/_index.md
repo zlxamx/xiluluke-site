@@ -1,8 +1,8 @@
 ---
 id: "pst_01ky9pfjzvenbrert8r35c8mm4"
 title: "AI越强，我越需要哲学"
-date: "2026-07-24T09:14:41.000Z"
-updated: "2026-07-24T09:14:49.000Z"
+date: "2026-06-04T09:14:00.000Z"
+updated: "2026-07-24T09:15:17.000Z"
 slug: "ai-yue-qiang-wo-yue-xu-yao-zhe-xue"
 type: "post"
 format: "note"
@@ -13,7 +13,7 @@ rating: 5
 featured_at: "2026-07-24T09:14:49.000Z"
 featured_post_ids:
   - "pst_01ky9pfjzvenbrert8r35c8mm4"
-featured_sort_at: "2026-07-24T09:14:41.000Z"
+featured_sort_at: "2026-06-04T09:14:00.000Z"
 media:
   - id: "med_01ky9pfadwenbrert17rdcs9fm"
     kind: "image"
