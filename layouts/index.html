@@ -2,11 +2,42 @@
   {{- $allPosts := where .Site.Pages "Type" "post" -}}
   {{- $publicPosts := where $allPosts "Params.visibility" "public" -}}
   {{- $publicPosts = $publicPosts.ByDate.Reverse -}}
+  {{- $latest := index $publicPosts 0 -}}
   {{- $featuredPosts := where $publicPosts "Params.featured_at" "ne" nil -}}
   {{- $featuredPosts = $featuredPosts.ByDate.Reverse -}}
-  {{- $lead := index $featuredPosts 0 -}}
-  {{- $recent := first 5 $publicPosts -}}
-  {{- $latest := index $publicPosts 0 -}}
+  {{- $lead := $latest -}}
+  {{- if gt (len $featuredPosts) 0 -}}
+    {{- $lead = index $featuredPosts 0 -}}
+  {{- end -}}
+  {{- $homeConfig := hugo.Data.luxi.home | default dict -}}
+  {{- $headlineSlug := $homeConfig.headline_slug | default "" -}}
+  {{- if $headlineSlug -}}
+    {{- $headlineMatches := where $publicPosts "Params.slug" $headlineSlug -}}
+    {{- if gt (len $headlineMatches) 0 -}}
+      {{- $lead = index $headlineMatches 0 -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $recent := slice -}}
+  {{- $recentSlugs := slice -}}
+  {{- range ($homeConfig.fixed_articles | default slice) -}}
+    {{- $fixedMatches := where $publicPosts "Params.slug" . -}}
+    {{- if gt (len $fixedMatches) 0 -}}
+      {{- $fixedPost := index $fixedMatches 0 -}}
+      {{- $fixedSlug := $fixedPost.Params.slug | default $fixedPost.Slug -}}
+      {{- if not (in $recentSlugs $fixedSlug) -}}
+        {{- $recent = $recent | append $fixedPost -}}
+        {{- $recentSlugs = $recentSlugs | append $fixedSlug -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- range $publicPosts -}}
+    {{- if ge (len $recent) 5 -}}{{- break -}}{{- end -}}
+    {{- $postSlug := .Params.slug | default .Slug -}}
+    {{- if not (in $recentSlugs $postSlug) -}}
+      {{- $recent = $recent | append . -}}
+      {{- $recentSlugs = $recentSlugs | append $postSlug -}}
+    {{- end -}}
+  {{- end -}}
   {{- $oldest := index $publicPosts (sub (len $publicPosts) 1) -}}
   {{- $writingDays := add (div (sub now.Unix $oldest.Date.Unix) 86400) 1 -}}
   {{- $projects := hugo.Data.luxi.projects -}}

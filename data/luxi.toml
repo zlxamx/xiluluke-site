@@ -1,3 +1,9 @@
+[home]
+# 首页头条文章的 Jant slug；留空时自动使用最新 Featured，若没有 Featured 则使用最新公开文章。
+headline_slug = "jj19"
+# 首页“最近发布”中的固定推荐，按这里的顺序优先展示，其余位置自动补入最新公开文章。
+fixed_articles = []
+
 [contact]
 wechat = "zlxamx"
 email = "Seedraft@outlook.com"
