@@ -1,6 +1,6 @@
 format = "jant-site"
 version = 1
-generated_at = "2026-07-24T09:15:18.000Z"
+generated_at = "2026-07-27T03:40:41.000Z"
 site_name = "LuxiBlog"
 site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
 site_language = "zh-Hans"
@@ -136,7 +136,7 @@ sequence = "06"
 slug = "weekly"
 title = "周刊"
 entry_count = 18
-recent_activity_label = "3d ago"
+recent_activity_label = "6d ago"
 recent_activity_iso = "2026-07-20T11:36:38.000Z"
 
 [[directory]]
@@ -155,5 +155,5 @@ slug = "products"
 title = "产品"
 description_html = "<p>我用 vibe coding 做的小产品合集。</p>"
 entry_count = 2
-recent_activity_label = "1d ago"
+recent_activity_label = "4d ago"
 recent_activity_iso = "2026-07-22T12:01:29.000Z"
