@@ -2,7 +2,7 @@
 id: "pst_01m34h83gzfzwbxbpgzjatjb8g"
 title: "告别"
 date: "2026-09-15T10:57:32.000Z"
-updated: "2026-09-22T12:25:29.000Z"
+updated: "2026-09-22T12:41:10.000Z"
 slug: "gao-bie"
 type: "post"
 format: "note"
@@ -10,6 +10,10 @@ status: "published"
 visibility: "public"
 summary_text: "再见 周日晚上，在深圳宝安灵芝附近的一条小巷里，我和梁某银一同下了网约车。 我看着他，他看着我。忽然都没有了话。 其实也不难知道这沉默的缘故。一路上能说的话很多，到了该分别的地方，却得从那些话中另外找出一句来，好把这一段相聚结束。仿佛少了这一句，两个人就还应该站着，还能再站一会儿。 我说：“是时候说再见了。”"
 truncated: true
+featured_at: "2026-09-22T12:41:10.000Z"
+featured_post_ids:
+  - "pst_01m34h83gzfzwbxbpgzjatjb8g"
+featured_sort_at: "2026-09-15T10:57:32.000Z"
 ---
 
 # 再见
