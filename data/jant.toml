@@ -1,6 +1,6 @@
 format = "jant-site"
 version = 1
-generated_at = "2026-09-22T12:41:10.000Z"
+generated_at = "2026-09-22T12:45:03.000Z"
 site_name = "LuxiBlog"
 site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
 site_language = "zh-Hans"
@@ -16,7 +16,7 @@ noindex = true
 site_avatar_mode = "custom"
 favicon_mode = "custom"
 apple_touch_mode = "custom"
-theme_id = "frost"
+theme_id = "sage"
 default_theme_id = "tufte"
 font_theme_id = "classic"
 theme_mode = "auto"
@@ -25,8 +25,8 @@ archive_page_size = 25
 rss_feed_limit = 50
 favicon_path = "/favicon.ico"
 apple_touch_icon_path = "/apple-touch-icon.png"
-site_avatar_url = "https://media.jant.me/media/sit_01ks2arkx6endsn2dxx310ge9r/assets/avatar/med_01ktz8ag2wecrvfpac1dfq0463.png"
-favicon_version = "202606130107"
+site_avatar_url = "https://media.jant.me/media/sit_01ks2arkx6endsn2dxx310ge9r/assets/avatar/med_01m34j7er1fzwbxcaz6j4z19jj.png"
+favicon_version = "202609221242"
 site_footer_html = "<p>公众号：希路路克</p>"
 site_footer_markdown = "公众号：希路路克"
 

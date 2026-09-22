@@ -2,7 +2,7 @@
 id: "pst_01m34h2yn6fzwbxatax0kjva4d"
 title: "小红书点点给我的极简护肤方案"
 date: "2026-09-22T11:13:55.000Z"
-updated: "2026-09-22T12:22:41.000Z"
+updated: "2026-09-22T12:45:02.000Z"
 slug: "xiao-hong-shu-dian-dian-gei-wo-de-ji-jian-hu-fu-fang-an"
 type: "post"
 format: "note"
@@ -72,6 +72,8 @@ truncated: true
 对护肤小白来说，这太好了：一下子知道该买什么，也有了可以马上执行的方案。
 
 最后我买了多芬氨基酸洁面慕斯和适乐肤保湿修复霜，加起来才几十块，一套护肤用品就齐了。
+
+![](https://media.jant.me/media/sit_01ks2arkx6endsn2dxx310ge9r/files/med_01m34jbptdfzwbxcbgj67arw02.webp)
 
 最近几天，我早晚都按点点的方案执行，很方便快捷，基本几分钟就完事。现在和学生时代不同，早上反而有更多时间做这种事。
 
