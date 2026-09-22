@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "关键词： 辩证极简主义 / Dialectical Minimalism个人哲学 / Personal Philosophy外部框架 / External Framework实践论 / On Practice生命感 / Sense of Being Alive 辩证极简主义。它的底层离不开现存的辩证唯物主义和极简主义，更重要的是，当两种理论以我的个人理解和实践经验呈现的时候它就具有了特殊性，我将这视为我的个人哲学，并想要命名为辩证极简主义。 这段时间以来，我的内心一直有这样的一个想法和冲动。我的心里一直有一个声音在告诉我：\"你得做这件事情。\" 我是一个依赖外部框架的人。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

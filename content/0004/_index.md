@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "最近这段时间一直在忙着做其他事情，已经有两三个月没有看韩剧了。 今天一位读者给我发微信，说推荐我看一部新剧，叫《爱情怎么翻译》 恰好我正好吃完午饭，有两个半小时的午休时间，于是便马上看了起来。 我真是受不了了。 韩剧为什么能这么好看？"
+truncated: true
 collections:
   - slug: "film-tv"
     title: "影视"

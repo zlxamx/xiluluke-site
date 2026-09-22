@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "\"看不见的东西，往往比看得见的东西更能决定结果。\" ——塞内加，《道德书简》 一直到三月下旬，我才从过年的节奏里缓过来。 去年下半年减脂掉下来的体重和维度，在过年的这段时间里几乎全部回来了。 回来了，都回来了。 所以三月下旬，我就逐渐开始了我今年的减脂计划了。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

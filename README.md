@@ -4,7 +4,7 @@ This is a static site exported from [Jant](https://github.com/jant-me/jant), rea
 
 ## Install Hugo
 
-This export targets Hugo **extended 0.160.1+**.
+This export targets Hugo **extended 0.147.7+**.
 
 **macOS (Homebrew):**
 
@@ -42,10 +42,47 @@ hugo --minify
 
 The output goes to the `public/` directory. Upload it to any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages, etc.).
 
+## Deploy to Cloudflare Workers
+
+`wrangler.jsonc` at the root is the deploy config: it names the Worker, runs `hugo --gc --minify`, and points the upload at `public/`. Connect this repository to Cloudflare Workers Builds and leave the commands Cloudflare offers as they are:
+
+| Field           | Value                          |
+| --------------- | ------------------------------ |
+| Build command   | leave empty                    |
+| Deploy command  | `npx wrangler deploy`          |
+| Version command | `npx wrangler versions upload` |
+
+The build belongs to `wrangler.jsonc` rather than to that field: Workers Builds reads a `package.json` to detect a framework, a Hugo site has none, and an empty build command deploys a `public/` that was never built. Filling the field in as well makes Hugo run twice.
+
+Check one thing before the first deploy: `name` in `wrangler.jsonc` has to match the Worker's name in the Cloudflare dashboard. Workers Builds fails the build when they differ, and a deploy run by hand under another name goes to another Worker. A Worker imported from a repository is named after the repository, so an export pushed by GitHub Sync uses the repository name. A downloaded export has no repository and uses the name GitHub Sync suggests when it creates one for this site. If the Worker is named something else, change `name` to match — Cloudflare names each build token `<worker-name> build token`, so the token list is one place to read it.
+
+Jant writes `wrangler.jsonc` once and never overwrites it, so a corrected name survives later syncs.
+
+`static/_redirects` needs no configuration here. Hugo copies it to `public/_redirects` and Workers applies the rules as published.
+
+## Feeds
+
+The feed addresses changed. Jant served them under `/feed`; Hugo serves them as `index.xml` inside each section:
+
+| Jant                 | This export               |
+| -------------------- | ------------------------- |
+| `/feed`              | `/featured/index.xml`     |
+| `/latest/feed`       | `/index.xml`              |
+| `/featured/feed`     | `/featured/index.xml`     |
+| `/archive/feed`      | `/archive/index.xml`      |
+| `/{collection}/feed` | `/{collection}/index.xml` |
+
+A reader who is already subscribed holds one of the old addresses, and a feed reader that gets a 404 stops delivering posts. `static/_redirects` maps every old address to its new one with a 301. Cloudflare Pages and Netlify read that file as published; on any other host, translate its rules into that host's redirect configuration before you point the domain here.
+
+Hugo's `aliases:` cannot cover this. An alias page redirects with a meta refresh and a script, and feed readers fetch XML without running either — only an HTTP redirect reaches them.
+
+The **Subscribe** entry in the site navigation points at `/featured/index.xml`. The exported site has no `/subscribe` page; that page belongs to the Jant runtime.
+
 ## Project structure
 
 ```
 hugo.toml                 — Site configuration (baseURL, title, theme, params)
+wrangler.jsonc            — Cloudflare Workers deploy config (see Deploy above)
 content/
   _index.md               — Home section
   archive/_index.md       — Archive section
@@ -59,6 +96,7 @@ data/
   jant.toml               — Nav items, branding, display preferences, ordered collections directory
 themes/jant/              — Bundled Hugo theme (overrideable via layouts/ at the site root)
 static/                   — Copy files here to add them to the published site
+  _redirects              — Feed redirects (see Feeds above)
 ```
 
 ## Customizing
@@ -85,5 +123,6 @@ Safe to re-run; files already on disk are reused. Anything that fails to downloa
 
 - Each thread is a Hugo branch bundle. Replies live as nested leaf bundles with `build.render = "never"` so they do not produce standalone URLs; they render inside the thread page.
 - `/{reply-slug}/` URLs are preserved via `aliases:` on the root post, so old links still land on the right thread anchor.
+- Feed addresses are the exception: they move to `index.xml` and stay reachable only through `static/_redirects`. See [Feeds](#feeds).
 - Media is emitted under `static/media/{id}.ext` and referenced from a flat `media:` array on each post. When a storage provider has a configured public URL (R2/S3/local proxy), the exporter links to the provider URL instead of re-bundling the bytes.
 - Posts with `draft: true` in front matter are only built when you pass `--buildDrafts` to `hugo` / `hugo serve`.

@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "最近几天，我经常和梁某银聊天，话题五花八门。 有趣的是，梁某银对唯物辩证法产生了兴趣。在我介绍后，他觉得掌握了唯物辩证法，工作和生活都能轻松应对，如砍瓜切菜一般。 我们聊了很多，期间我对他说：“我发现现在越来越多的年轻人开始读《毛选》了。” 虽然没深入讨论，但这引发了我的思考：为什么？为什么越来越多的年轻人开始读《毛选》？ 这篇文章，我想分享我的个人看法。"
+truncated: true
 featured_at: "2026-05-23T03:39:48.000Z"
 featured_post_ids:
   - "pst_01ks2qxjkcendsn3gb326efbyn"

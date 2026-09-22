@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "说实话，我以前很讨厌打扫卫生。 一想到要扫地、拖地、家里还有那么多柜子要擦，腰就开始酸痛了。 后来我发现，以前我就是因为家里东西太多了才不想打扫卫生。 但是现在，我一点儿也不为这个问题担心，因为现在我的家对比过去，可以说是“什么都没有”。 细数我的所有家具，我的家里只有两个小柜子、一个衣柜、一张床、一张电脑桌、一张椅子、一个鞋架，除此之外再无其他。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

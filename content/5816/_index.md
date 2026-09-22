@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "关键词： 注意力 / Attention系统 / System潮流追逐 / Trend Chasing留白 / Blank Space信息环境 / Information Environment 四十五天，能发生什么？ 从龙虾的爆火到争议的爆发，从上门安装部署到上门卸载，四十五天，一场有关龙虾的风潮过去了，如同绿地慢慢干涸，留下一阵萧索和荒凉。 昨天我写了一篇文章来分析，为什么会有人在这场来去如风的龙虾热潮中没有赶上，却觉得怅然若失。今天我再次思考了一番，却发现这件事情的背后有着更具有普适性的思考。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

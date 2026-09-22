@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "今天和母亲一起吃饭，说弟弟前两天说要开始减肥了。 我说一个初中生有什么好减肥的，弟弟说他的体重已经一百八十斤了，的确该控制一下了。 于是我和弟弟说，如果你真的想减肥，那就先别想太多，首先你需要做到两件事情。 不论你运不运动，在坚持和规律的做到这两点的情况下，你的体重一定会得到你想要的变化。 第一、停止所有饮料的饮用。"
+truncated: true
 collections:
   - slug: "life-health"
     title: "生活与健康"

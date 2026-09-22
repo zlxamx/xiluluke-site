@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "没有革命的理论，就没有革命的运动。 ——列宁《怎么办？》 我把《毛选》做成了一个 SKILL。 这个想法一开始来自我的朋友 DC，自从我加入了「字里行间」群之后，我似乎就鼓动了包括 DC、梁某银在内的好几个人都开始阅读《毛泽东选集》。 对我来说，这是一件很荣幸的事情，因为我打心底里是向所有人推荐这本书的。 而 DC 是一位 AI 深度研究者，他多次和我说过，让我把《毛泽东选集》做成一个 SKILL，这会是很有意思的一件事情。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

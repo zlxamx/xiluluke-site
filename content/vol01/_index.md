@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "关键词： 极简主义 / Minimalism惯性 / Inertia轻断食 / Intermittent Fasting自我觉察 / Self-awareness创造力 / Creativity 你好，我是希路路克，这是我从本周开始创建的周刊栏目。 与每天晚上更新不同，我在周刊中将会把过去一周我认为最值得分享的内容集合在一起呈现在大家眼前。 当然，不用把周刊这个词看得过于严肃，正如我的周刊名\"希路路克的周末来信\"一样，就当是一位朋友在与你分享过去一周觉得有意思的思考吧。"
+truncated: true
 collections:
   - slug: "weekly"
     title: "周刊"

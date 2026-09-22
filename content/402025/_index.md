@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "第一部分：重要时刻 关于这一年的大事记与转折点。 1. 今年你做了哪些以前从未尝试过的事情？ 开始健身。 2. 你今年去过哪些城市、州或国家？"
+truncated: true
 featured_at: "2026-05-23T03:39:48.000Z"
 featured_post_ids:
   - "pst_01ks2qwz94endsn3ew4sjv6z2m"

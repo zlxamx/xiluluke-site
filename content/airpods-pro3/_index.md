@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "几个月前，我购买了一副AirPodsPro3，这是Apple时隔三年推出的Pro系列耳机，也是我的第一款AirpodsPro 我的上一款耳机是OPPO Enco Free4，更换成apple，一方面是为了生态，而另一方面也是追求音质、降噪、佩戴感受的提升。 几个月用下来，AirPodsPro在音质方面没有给我很大的惊喜，在这一点上或许是因为我本身就是木耳，对音质不敏感。 但 是在其他方面，AirPodsPro都带给了我很奇妙和惊喜的体验。 首先是降噪，AirPodsPro的降噪体验非常好，选择合适的耳帽进行佩戴，会大大增加佩戴的舒适性和降噪功能的强弱。"
+truncated: true
 collections:
   - slug: "digital-life"
     title: "数字生活"

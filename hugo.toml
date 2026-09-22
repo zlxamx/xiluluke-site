@@ -3,7 +3,6 @@ title = "LuxiBlog"
 languageCode = "zh-hans"
 defaultContentLanguage = "zh-hans"
 theme = "jant"
-paginate = 50
 enableRobotsTXT = true
 disableKinds = ['taxonomy', 'term']
 
@@ -33,6 +32,7 @@ disableKinds = ['taxonomy', 'term']
 [params]
   description = "你好，这里是希路路克，一个辩证的极简主义者。"
   main_rss_feed = "featured"
+  archive_default_layout = "list"
   public_api_enabled = true
   rss_feeds_enabled = true
   show_jant_branding_on_home = false
@@ -42,8 +42,8 @@ disableKinds = ['taxonomy', 'term']
   default_theme_id = "tufte"
   font_theme_id = "classic"
   theme_mode = "auto"
-  page_size = 50
-  archive_page_size = 50
+  page_size = 25
+  archive_page_size = 25
   rss_feed_limit = 50
   site_avatar_url = "https://media.jant.me/media/sit_01ks2arkx6endsn2dxx310ge9r/assets/avatar/med_01ktz8ag2wecrvfpac1dfq0463.png"
   favicon_version = "202606130107"

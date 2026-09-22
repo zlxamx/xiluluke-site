@@ -8,8 +8,27 @@
 
 :root {
   /* Typography — Font families */
-  --font-cjk-serif-fallback: "Jant Language Fallback";
-  --font-cjk-sans-fallback: "Jant Language Fallback";
+  /*
+   * CJK fallback slots, kept in sync with `DEFAULT_FONT_CJK_*_FALLBACK` in
+   * `ui/font-themes.ts` (a test asserts they match). A page whose language names
+   * a CJK profile overrides both with a stack that leads on its own glyph
+   * shapes; every other page keeps these, because the Latin families and the
+   * `serif` / `sans-serif` generics around them have no Han coverage and would
+   * otherwise drop the text to the OS last-resort font.
+   */
+  --font-cjk-serif-fallback:
+    "Songti SC", STSong, SimSun, "Noto Serif SC", "Noto Serif CJK SC",
+    "Songti TC", PMingLiU, MingLiU, "Noto Serif TC", "Noto Serif CJK TC",
+    "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho", YuMincho,
+    "Noto Serif JP", "Noto Serif CJK JP", "MS PMincho", "MS Mincho", Batang,
+    "Noto Serif KR", "Noto Serif CJK KR", NanumMyeongjo;
+  --font-cjk-sans-fallback:
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
+    "Noto Sans CJK SC", "PingFang TC", "Hiragino Sans CNS",
+    "Microsoft JhengHei", "Noto Sans TC", "Noto Sans CJK TC", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, "Noto Sans JP",
+    "Noto Sans CJK JP", Meiryo, "Apple SD Gothic Neo", "Noto Sans KR",
+    "Noto Sans CJK KR", "Malgun Gothic";
   --font-body:
     system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Helvetica, Arial, var(--font-cjk-sans-fallback),
@@ -124,7 +143,26 @@
   --form-max-width: 42rem;
   /* compose dialogs + feed content cap */
   --layout-body-max-width: 1088px;
+  /*
+   * Two widths, one column — keep the distinction straight.
+   *
+   * `--layout-content-width` is the Tufte proportion: how much of a page
+   * section its content occupies, leaving the rest as sidenote gutter. Page
+   * shells that should fill the frame once the gutter is gone (settings,
+   * the collections directory) read this one, which is why it flattens to
+   * 100% below 1024px.
+   *
+   * `--layout-reading-width` is the reading column a post's text actually
+   * gets. It tracks the proportion while the gutter exists, then keeps a
+   * measure of its own instead of going full-width. Anything that must line
+   * up with body copy — the text blocks in preset.css, a lone image
+   * (MediaGallery `getSingleVisualWidth`), a link preview, the feed divider
+   * that centers over the column — reads this one. Before it existed those
+   * consumers capped on the proportion and quietly outgrew the text between
+   * 700px and 1024px.
+   */
   --layout-content-width: 55%;
+  --layout-reading-width: var(--layout-content-width);
   --layout-sidenote-width: 50%;
   --layout-sidenote-gap: 10%;
   --layout-sidenote-margin: -60%;
@@ -169,7 +207,7 @@
    * -bottom: gap from the intro down to its separator — the hairline (logged
    * out) or the compose prompt text (logged in). Same values in both states.
    */
-  --site-intro-gap-top: 24px;
+  --site-intro-gap-top: 20px;
   --site-intro-gap-bottom: 36px;
 
   /* Sidebar layout (admin + site sidebar pages) */
@@ -203,7 +241,30 @@
   );
   --site-threadline: var(--border);
   --site-page-bg: var(--background);
+  /* Despite the name, this is the page colour and ~60 rules use it that way —
+     including three that use it as *text* on a dark button. It cannot be
+     lifted without repainting the whole site; `--site-raised-bg` below is the
+     one that actually means "above the page". Read this as
+     "--site-default-surface" until the call sites are triaged. */
   --site-elevated-bg: var(--background);
+  /* What sits *above* the page: dialogs, popovers, menus, sheets. On a light
+     page this is the page colour, because the separating is done by the
+     backdrop dim and the drop shadows — both black over white. Neither works
+     on a dark page: 30% black over `#110f0d` composites to `#0c0b09`, and a
+     black shadow on near-black is nothing at all, which left the compose
+     dialog at 1.03:1 against its own backdrop. So in dark mode this lifts
+     instead (see the dark blocks below). Elevation there is lightness, not
+     shadow. */
+  --site-raised-bg: var(--site-page-bg);
+  /* The edge of a raised layer. On a light page the fill already separates and
+     this is just a hairline; on a dark one it does most of the work, because
+     the fill has almost no room to lift into. Same formula as
+     `--compose-control-border` in light so nothing moves there. */
+  --site-raised-border: color-mix(
+    in srgb,
+    var(--site-column-outline) 68%,
+    transparent
+  );
   --site-nav-hover-bg: var(--accent);
   --site-text-primary: var(--foreground);
   --site-text-secondary: var(--muted-foreground);
@@ -350,7 +411,10 @@
     var(--site-accent) 16%,
     transparent
   );
-  --compose-paper-bg: var(--site-page-bg);
+  /* The composer is a floating sheet in every mode but one, so its paper is
+     the raised surface. `.compose-page` — the full-page `/new` composer, which
+     *is* the page — puts this back to `--site-page-bg` locally. */
+  --compose-paper-bg: var(--site-raised-bg);
   --compose-control-bg: color-mix(
     in srgb,
     var(--site-nav-hover-bg) 72%,
@@ -365,6 +429,15 @@
     in srgb,
     var(--site-column-outline) 68%,
     transparent
+  );
+  /* The tools row sits directly under the sentence being written, so its icons
+     stay a step behind the body's own muted ink and only come forward when
+     pointed at or switched on. 72% keeps the faded state above the 3:1
+     non-text contrast floor. */
+  --compose-tool-ink: color-mix(
+    in srgb,
+    var(--site-text-secondary) 72%,
+    var(--compose-paper-bg)
   );
   --compose-blockquote-rail: color-mix(
     in srgb,
@@ -401,7 +474,38 @@
   --dash-card-radius: 10px;
 }
 
-@media (max-width: 760px) {
+/* =========================================================================
+ * Breakpoint ledger
+ *
+ * Every width breakpoint in the stylesheets comes from this list, and each
+ * entry names the one job it does. `src/__tests__/stylesheet-breakpoints.test.ts`
+ * fails the build on anything else, because a second number for a job that
+ * already has one is how the phone switch drifted apart before: the composer
+ * once went full-screen at 700px while its own controls took their touch
+ * sizing at 760px, so a 750px window got thumb-sized buttons inside a windowed
+ * dialog.
+ *
+ *   480px   Header hamburger; the composer's post-meta pill sheds its words.
+ *   580px   Nav collapse tier-sm (hides the 3rd inline link).
+ *   640px   Media grid and lightbox chrome.
+ *   700px   THE PHONE SWITCH. Below it the layout is a phone's: the composer
+ *           is a full-screen sheet, the compose FAB appears, page gutters and
+ *           the content type scale go narrow. Written `max-width: 699px` on
+ *           the phone side and `min-width: 700px` on the desktop side, so the
+ *           two never both match at 700px itself.
+ *   780px   Nav collapse tier-md (also hides the 4th inline link).
+ *   960px   Nav collapse tier-lg (hides the 5th+ inline link into More).
+ *   1024px  Tufte two-column → single-column (see the note below).
+ *   1079px  Collections sidebar drops out.
+ *   1200px  Header search collapses to an icon.
+ *
+ * Touch is NOT a width. Thumb-sized controls and always-visible affordances
+ * belong to `(hover: none) and (pointer: coarse)`, which is what actually
+ * catches a phone or a tablet; a narrow desktop window is still a mouse.
+ * Rules that want both say both.
+ * ========================================================================= */
+
+@media (max-width: 699px) {
   :root {
     --site-padding: 1.875rem;
   }
@@ -409,17 +513,18 @@
 
 /* Tufte two-column → single-column collapse.
  *
- * Below this width the post column is already narrowed to `min(100%, 35rem)`
- * (preset.css) and there is no room for a 45% sidenote gutter, so all content
- * goes full-width. Single images (MediaGallery getSingleVisualWidth) and link
- * previews (.link-preview) read this token directly, so they collapse here too.
+ * There is no room for a 45% sidenote gutter here, so page shells go
+ * full-width — but the reading column does not follow them. It keeps a 35rem
+ * measure, and everything sized to the text (preset.css blocks, single images,
+ * link previews, the feed divider) tracks that through
+ * `--layout-reading-width` rather than restating the number.
  *
- * Keep this breakpoint in sync with the post-column collapse (preset.css /
- * ui.css feed-divider, both `max-width: 1024px`) and the sidenote float→inline
- * collapse (ui.css). They are one layout switch; do not let them drift apart. */
+ * Keep this breakpoint in sync with the sidenote float→inline collapse
+ * (ui.css). They are one layout switch; do not let them drift apart. */
 @media (max-width: 1024px) {
   :root {
     --layout-content-width: 100%;
+    --layout-reading-width: min(100%, 35rem);
   }
 }
 
@@ -471,6 +576,16 @@
     --search-mark-bg: oklch(0.45 0.1 85 / 0.5);
     --search-mark-color: oklch(0.92 0.08 90);
     --dash-bg: oklch(0.2 0.005 80);
+    --site-raised-bg: color-mix(
+      in oklab,
+      var(--background) 88%,
+      var(--foreground)
+    );
+    --site-raised-border: color-mix(
+      in oklab,
+      var(--site-raised-bg) 78%,
+      var(--foreground)
+    );
   }
 }
 
@@ -501,9 +616,25 @@
   --search-mark-bg: oklch(0.45 0.1 85 / 0.5);
   --search-mark-color: oklch(0.92 0.08 90);
   --dash-bg: oklch(0.2 0.005 80);
+  /* 12% of the foreground mixed into the page. The headroom here is small and
+     bounded: `--site-divider` sits 1.36:1 above the page, and a surface lifted
+     past it would swallow every hairline drawn on it. 12% lands at 1.24:1 —
+     most of the range that exists, with the dividers still on top of it. */
+  --site-raised-bg: color-mix(
+    in oklab,
+    var(--background) 88%,
+    var(--foreground)
+  );
+  /* Carries the separation the fill cannot: 12% of lift is most of the room
+     the palette has, so the edge has to say the rest. */
+  --site-raised-border: color-mix(
+    in oklab,
+    var(--site-raised-bg) 78%,
+    var(--foreground)
+  );
 }
 
-@media (max-width: 760px), (hover: none) and (pointer: coarse) {
+@media (max-width: 699px), (hover: none) and (pointer: coarse) {
   :root {
     /* Content layer — tighter scale for mobile reading.
        Ratio ≈ 1.88 : 1.42 : 1.15 : 1 (display:title:subtitle:body).

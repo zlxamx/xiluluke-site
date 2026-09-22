@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "你只有失去某件东西之后，才会真正看见它。 ——梭罗《瓦尔登湖》 你放鞋的时候，是鞋尖朝里还是鞋跟朝里？ 因为觉得鞋尖朝里最方便，所以我一直都是鞋尖朝里。 但是上周，我在打扫屋子的时候把鞋架挪了个位置，刚挪完的我没有意识到，我把鞋架放反了，原本鞋尖朝里的鞋现在全部变成了鞋尖朝外。 一直到第二天换鞋的时候，我才反应过来，然后我就开始思考。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

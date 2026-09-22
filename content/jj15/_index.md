@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "文学的目的是让人感到生命值得度过。 ——乔治·艾略特 这个问题的本质是，我要不要围绕着我的付费产品，来搭建我的公众号内容。 诚然，我现在的确做了一个付费产品，就是我的《毛选生活指南》付费专栏。 但我是否有必要把整个写作方向调整到围绕着专栏来做呢？ 要回答这个问题，首先应该充分认识它。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

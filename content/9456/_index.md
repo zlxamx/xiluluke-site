@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "最近在看韩剧《灵指》 女主人公宋雨研是一个非常典型的普通人人设，她有一个喜欢遏制孩子天性的母亲，要求她必须用功读书，除此之外什么也不能做。 这导致了宋雨研成为了一个个性内敛，在大多数时候不敢表达自己内心想法的人。 这部剧里探讨了很多关于青少年个性发展的话题，很多都具有现实启发性。 而我今天想写的只是因为一个镜头所产生的思考。"
+truncated: true
 collections:
   - slug: "film-tv"
     title: "影视"

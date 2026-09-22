@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "我有个高中同学，他每次换手机都会来问我，应该买什么，在哪里买，以及买了之后旧手机应该怎么处理。 什么，你换新手机了？那旧的呢？ 旧的当然是放... 其实我从来没有推荐过朋友去转转回收，因为相比起转转，我认为闲鱼是一个更适合处理二手手机的地方。 诚然，转转的回收服务非常便捷，但是相对的价格也是略低的，而在闲鱼通常都能以比转转回收价高几百元甚至一千元的价格出手。"
+truncated: true
 featured_at: "2026-05-23T03:39:48.000Z"
 featured_post_ids:
   - "pst_01ks2r18z4endsn4mts4pr4yh4"

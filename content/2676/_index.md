@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "最近，我在每日健身训练计划中增加了两组一分钟的平板支撑项目。 目的是为了在一定程度上提升我的核心力量。 核心力量是指包括盆骨、下背、臀部和腹部等中心区域的的肌肉群力量。 我们很难用肉眼直接判断核心力量的强弱，但它在日常活动中扮演着关键角色。 核心肌群是身体力量的中枢，负责稳定整个身体的重心。"
+truncated: true
 collections:
   - slug: "life-health"
     title: "生活与健康"

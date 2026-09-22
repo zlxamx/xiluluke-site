@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "过去一周，我通过Notion表格记录了七件被丢弃的物品，这个习惯让我能清晰回溯那些曾存在于家中各角落的东西。 1、朋友送的坏键盘 上个月回重庆，喜欢逛跳蚤市场的老杨把它送给我。 他当时就说：“这键盘有点问题，你拿回去研究研究。” 回家一试，果然是坏的，我也没修好。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

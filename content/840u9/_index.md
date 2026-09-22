@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "本周摘抄 赚钱的第一性原理，不是卖时间，是创造价值。 创造价值的第一性原理，不是出苦力，是解决问题。 解决问题的第一性原理，不是自我感动，是识别真需求、快速验证、迅速迭代。 快速迭代的第一性原理，不是瞎忙，是验证模型、复制系统。"
+truncated: true
 collections:
   - slug: "weekly"
     title: "周刊"

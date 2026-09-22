@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "机器永远不会疲倦，也永远不会抱怨。 ——凯文·凯利《科技想要什么》 今天一天时间，我接连订阅了两个AI，回过头来才发现，原来我已经在不知不觉间订阅了这么多个AI模型了。 Claude Claude是我现目前最爱用的模型，订阅的级别是 Pro，每个月 20 美元。 它的缺点很少，除了 Anthropic 公司本身的国际立场问题和价格问题之外，Claude 堪称是完美的AI模型。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

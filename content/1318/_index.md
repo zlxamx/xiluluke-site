@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "月初，我搬进了新家，随之而来的是大堆行李。 我先将常用物品归位：电饭煲和厨具放进厨房，电脑配件摆上电脑桌，衣服挂进衣柜。 做完这些，日常起居基本能正常运转了。 但客厅里还堆着四个箱子和一个塞满杂物的行李箱。 我甚至不记得里面具体有什么——从那以后，只有需要某件东西时，我才会去翻找。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "过去一周，我通过Notion表格记录了四件被丢弃的物品，这个习惯让我能清晰回溯那些曾存在于家中各角落的东西。 1、换下来的门锁。 这个纸箱一直放在家门口，每次推门回家第一眼就会看到它。 里面装着换下来的旧门锁零件。 其实我早该扔掉它，却总想着“万一以后要把新锁拆下来重新装上旧锁”。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

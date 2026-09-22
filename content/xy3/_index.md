@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "什么？你又换手机了？那旧的呢？ 旧的？旧的当然是放... 讲真的，虽然这么多年以来，社交媒体上充斥着转转的广告，魔性的广告词几乎快要成了一种抽象文化。 然而对于参与二手交易快要八年的我，我还是对转转这个平台没有什么好感。 转转现在似乎把自己营造成了一个官方回收+官方出售的平台，而在用户自由二手交易方面，不论是宣发还是实际体验，都是闲鱼更胜一筹。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

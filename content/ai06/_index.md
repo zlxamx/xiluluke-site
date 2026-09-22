@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "前天晚上，我给朋友DC发了一条消息：“DC，你以前大学是学啥专业的？” DC是我目前接触的人里在对AI的理解是实践这一块是走在最前面的人，而我问他这个问题，不是想要了解他，而是因为我日益无法安放的焦虑。 这种焦虑不是无源之水，它是在最近几个月来不断地认识和实践，逐渐累积起来的。 我没办法用一句话来形容这种焦虑感，我只能把它一层层拆开，才能看到这个焦虑的本质，不知道有没有拥有和我一样焦虑的人。 这个焦虑的最底层，是我对AI能力的认识。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

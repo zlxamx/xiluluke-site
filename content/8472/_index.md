@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "理论上来说，我作为一个喜欢摄影的骑行佬，没有理由不买运动相机。 但是多年以来，手机相机我折腾了不少，唯独运动相机是连门都没有如果。 为什么呢？ 其实很简单，因为用运动相机，是一件想想就麻烦的事情。 运动相机，应用场景当然首先是运动，而我喜爱的运动是骑行，诚然，骑行的时候有一个相机来记录的确不错，但这个不错会为我带来很多事情。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

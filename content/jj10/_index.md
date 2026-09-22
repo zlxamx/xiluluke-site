@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "身体比头脑更诚实，它不会说谎，只会沉默或叫嚷。 ——卡夫卡《日记》 昨天上午，我从健身房走出来，感觉整个人都魂不守舍的。 回想起早上起床的时候，我脑子里的第一个念头就是：今天不想练了，好累。 最近虽然每天晚上都睡了七个半小时以上，但能明显感觉到睡眠质量不佳，睡醒之后眼皮很重。 但最后我还是起床吃了早饭，然后拿着健身包出门去健了身。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

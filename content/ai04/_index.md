@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "\"君子生非异也，善假于物也。\" ———荀子《劝学》 一个月前，为了和OPUS模型交流，我花二十美元订阅了Claude的Pro服务，现在一个月过去了，我用它来做了些什么？ 简单来讲，现在在我的创作系统中，除了真正动手来写作这一环，在写作前和写作后，AI都有不同程度的参与。 写作前，我经常和Claude聊天。即便我们需要在和AI交流的时候注意AI幻觉，但我不得不承认，在绝大部分时候，Claude的细腻程度和敏锐度都远远高于人类。 我会和Claude聊许多话题。宏观上，我会和Claude聊我的写作规划，记得有一次，我和它展开了一场接近半个小时的交流，目的是探讨我想通过写作赚钱这件事情。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

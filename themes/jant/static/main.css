@@ -36,6 +36,13 @@ body {
   background-color: var(--site-page-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Every text node in an exported page is authored content, and authored text
+     can contain a run with no break opportunity — a long URL, an ID, a word
+     typed without spaces. Such a run does not wrap on its own and spills past
+     the content column across the page. `break-word` splits it only when it
+     cannot fit a line by itself, so ordinary text keeps its natural line breaks
+     and intrinsic sizing is unaffected. */
+  overflow-wrap: break-word;
 }
 
 img,
@@ -686,7 +693,6 @@ time {
 .home-branding-credit {
   margin-top: var(--space-xl);
   padding-bottom: var(--space-xl);
-  text-align: center;
   color: var(--site-text-secondary);
   font-size: var(--type-base);
 }
@@ -1067,6 +1073,11 @@ hr.feed-divider {
   align-items: center;
   gap: 0.45rem;
   flex-wrap: wrap;
+  /* The name and source are flex items, which refuse to shrink below their
+     min-content width. The inherited `break-word` leaves min-content at the
+     longest word and the item still overflows; `anywhere` also shrinks
+     min-content, which is what lets the row wrap. */
+  overflow-wrap: anywhere;
   margin-top: 0.95rem;
   color: var(--site-text-secondary);
   font-family: var(--font-ui);
@@ -1998,7 +2009,7 @@ hr.feed-divider {
 .pagination {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1.5rem 0;

@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "今天下午，我骑自行车测试了自己的最大摄氧量。 我将五分钟内记录的最高平均功率数据提交给AI Gemini，请它计算我的VO₂max水平，并评估这一数值在同龄人中的排名。 最终Gemini给予我的回复如下图： 从图中可以看出，笔者的最大摄氧量水平在同年龄段也仅仅处于中等水平，再退步一点就要成为差生了。 而这样的结果，也是建立在我一年内数千公里的骑行数据上而来的。"
+truncated: true
 collections:
   - slug: "life-health"
     title: "生活与健康"

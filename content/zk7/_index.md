@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "生命中大多数时光，不过是一些平凡的习惯在运转，而运转得好不好，决定了你是谁。 ——威廉·詹姆斯 一转眼，一周又要结束了。 回顾过去这一周，我的时间都用在了什么事情上呢？ 研究和实践 AI 的使用规划专栏的写作玩洛克王国有氧运动散步 研究和实践 AI 的使用"
+truncated: true
 collections:
   - slug: "weekly"
     title: "周刊"

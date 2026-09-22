@@ -1,10 +1,13 @@
 format = "jant-site"
 version = 1
-generated_at = "2026-07-27T03:40:41.000Z"
+generated_at = "2026-09-22T12:19:40.000Z"
 site_name = "LuxiBlog"
 site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
 site_language = "zh-Hans"
+multilingual_enabled = false
+additional_languages = ""
 main_rss_feed = "featured"
+archive_default_layout = "list"
 public_api_enabled = true
 rss_feeds_enabled = true
 show_jant_branding_on_home = false
@@ -17,8 +20,8 @@ theme_id = "frost"
 default_theme_id = "tufte"
 font_theme_id = "classic"
 theme_mode = "auto"
-page_size = 50
-archive_page_size = 50
+page_size = 25
+archive_page_size = 25
 rss_feed_limit = 50
 favicon_path = "/favicon.ico"
 apple_touch_icon_path = "/apple-touch-icon.png"
@@ -36,7 +39,7 @@ placement = "header"
 
 [[nav]]
 type = "system"
-label = "Archive"
+label = "All"
 url = "/archive/"
 system_key = "archive"
 placement = "header"
@@ -71,7 +74,7 @@ placement = "more"
 
 [[nav]]
 type = "system"
-label = "Feed"
+label = "RSS"
 url = "/featured/index.xml"
 system_key = "rss"
 placement = "more"
@@ -136,7 +139,7 @@ sequence = "06"
 slug = "weekly"
 title = "周刊"
 entry_count = 18
-recent_activity_label = "6d ago"
+recent_activity_label = "Jul 20"
 recent_activity_iso = "2026-07-20T11:36:38.000Z"
 
 [[directory]]
@@ -155,5 +158,5 @@ slug = "products"
 title = "产品"
 description_html = "<p>我用 vibe coding 做的小产品合集。</p>"
 entry_count = 2
-recent_activity_label = "4d ago"
+recent_activity_label = "Jul 22"
 recent_activity_iso = "2026-07-22T12:01:29.000Z"

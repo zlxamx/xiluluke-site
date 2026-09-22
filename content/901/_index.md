@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "我家只有两个垃圾桶：一个在厨房，一个在客厅。 厨房的垃圾桶专用于厨余垃圾。这类垃圾常涉及液体、蛋壳、果皮、骨头等，需要容器集中处理。 客厅的垃圾桶则容纳除厨房和卫生间外产生的所有垃圾——比如纸团、食品包装袋，偶尔也会有香蕉皮。 过去我喜欢在客厅、卧室、电脑房各放一个垃圾桶，图的是随时丢垃圾的便利。 但后来我改变了做法。"
+truncated: true
 collections:
   - slug: "minimalism"
     title: "极简主义"

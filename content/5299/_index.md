@@ -9,6 +9,7 @@ format: "note"
 status: "published"
 visibility: "public"
 summary_text: "在无氧健身中，有三大基础动作，被称为力量训练的黄金三项。 它们分别是卧推、硬拉、深蹲。 这三个动作可以说是每一个健身的人都绕不开的动作，它们分别是推、拉、蹲三大动作类型的代表动作。 正式接触这三个动作一个月以来，我真正意义上的在现实中认识了它们。 为什么说这三个训练动作是宝？"
+truncated: true
 collections:
   - slug: "life-health"
     title: "生活与健康"
