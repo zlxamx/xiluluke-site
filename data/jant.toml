@@ -1,6 +1,6 @@
 format = "jant-site"
 version = 1
-generated_at = "2026-09-23T00:58:51.000Z"
+generated_at = "2026-09-23T00:59:04.000Z"
 site_name = "LuxiBlog"
 site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
 site_language = "zh-Hans"
@@ -177,6 +177,6 @@ sequence = "10"
 slug = "maoxuan-life-guide"
 title = "毛选生活指南"
 description_html = "<p>以《毛选》为线索的生活与实践思考。</p>"
-entry_count = 8
-recent_activity_label = "May 29"
-recent_activity_iso = "2026-05-29T10:35:29.000Z"
+entry_count = 11
+recent_activity_label = "Jun 19"
+recent_activity_iso = "2026-06-19T15:26:31.000Z"
