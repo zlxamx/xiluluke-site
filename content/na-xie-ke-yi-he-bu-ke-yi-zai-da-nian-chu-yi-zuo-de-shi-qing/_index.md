@@ -10,6 +10,17 @@ status: "published"
 visibility: "public"
 summary_text: "过了除夕夜，就是大年初一，也就是传统意义上的春节。 在我的老家，有许多要做和不能做的事情。 从除夕夜开始算起，那些要做好的事情有： 1、张贴 除夕夜，对联、门神、福字必须都要张贴到位，还有大门前的两个红灯笼也要挂到位。这些东西每一样都有他们独特的寓意。"
 truncated: true
+collections:
+  - slug: "life-health"
+    title: "生活与健康"
+    collected_at: "2026-09-22T12:56:09.000Z"
+    position: 0
+    pinned_at: null
+  - slug: "essays"
+    title: "随笔与思考"
+    collected_at: "2026-09-22T12:56:10.000Z"
+    position: 1
+    pinned_at: null
 ---
 
 过了除夕夜，就是大年初一，也就是传统意义上的春节。

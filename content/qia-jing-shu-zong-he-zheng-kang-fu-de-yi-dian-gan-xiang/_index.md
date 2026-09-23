@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "在膝盖的外侧，髂胫束和股外侧肌的止点之间，存在一个在解剖图里可以明显观察到的缝隙。 而这个缝隙里存在着一些脂肪组织，也可以叫做脂肪垫。而一般来说，髂胫束综合征的疼痛，就是因为膝盖进行屈伸时对下方的脂肪垫产生了压迫，从而引发了炎症。 昨天我带着我的 MRI 片子去康复机构见彭师傅为我推荐的康复师。 在此之前，其实我还没有找过专业人士来为我确诊我的髂胫束综合征，他让我躺在床上，下肢放松，随后把我的下肢当棉花一样玩弄了一番，最后轻描淡写地告诉我：“嗯，你这是非常典型的髂胫束综合征。” 一听这话，我不仅没有觉得难过，反而还觉得有些放松。"
 truncated: true
+collections:
+  - slug: "life-health"
+    title: "生活与健康"
+    collected_at: "2026-09-22T12:55:12.000Z"
+    position: 0
+    pinned_at: null
 media:
   - id: "med_01m34gzs23fzwbxaq7rjwdsj5p"
     kind: "image"

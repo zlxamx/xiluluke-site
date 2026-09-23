@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "各位好，今天这篇文章，我们继续聊实践论。 在上一篇文章结尾，我留下了一个问题。 为什么同样是做了一辈子事，有人沉淀出了真正的规律，有人只是积累了一堆经验？ 这个问题其实很重要。 因为如果一个人只是没有实践，那问题反而简单。"
 truncated: true
+collections:
+  - slug: "maoxuan-life-guide"
+    title: "毛选生活指南"
+    collected_at: "2026-09-22T12:55:36.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 各位好，今天这篇文章，我们继续聊实践论。

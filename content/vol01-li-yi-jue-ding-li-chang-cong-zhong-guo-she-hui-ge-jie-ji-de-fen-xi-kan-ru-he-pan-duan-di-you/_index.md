@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "人们奋斗所争取的一切，都同他们的利益有关。 ——马克思《〈莱茵报〉》 毛泽东为什么要写《中国社会各阶级的分析》？ 有问题，才会有答案。 那么在 1925 年，毛泽东面临的问题是什么？ 在文章的一开头，他就毫不拖泥带水地点了题。"
 truncated: true
+collections:
+  - slug: "maoxuan-life-guide"
+    title: "毛选生活指南"
+    collected_at: "2026-09-22T12:55:47.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 > 人们奋斗所争取的一切，都同他们的利益有关。

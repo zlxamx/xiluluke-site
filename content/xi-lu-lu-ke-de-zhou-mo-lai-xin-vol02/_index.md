@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "核心板块 把光递给后面的人 或许你从来不看英雄联盟电竞比赛，但我希望你能读完这一部分内容。 昨天晚上，我又在看英雄联盟比赛。最近，全球先锋赛进行得如火如荼，但我已经觉得没什么新意。因为看来看去，最后都是中国和韩国的争斗罢了。 半决赛，韩国的一号种子 GEN 对战欧洲赛区的一号种子 G2。虽然 G2 是欧洲赛区的老牌豪门，但多年以来他们一直没有什么世界赛成绩，即便他们在上一场比赛里速通了韩国的二号种子，也没有人看好他们。"
 truncated: true
+collections:
+  - slug: "weekly"
+    title: "周刊"
+    collected_at: "2026-09-22T12:56:31.000Z"
+    position: 0
+    pinned_at: null
 media:
   - id: "med_01m34ha8hsfzwbxc4ars6dqkzw"
     kind: "image"

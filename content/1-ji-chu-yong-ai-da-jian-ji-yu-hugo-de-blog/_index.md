@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "我的博客地址：luix.blog 欢迎参观。 为什么要搭建博客 我在去年年底才有搭建自己博客的想法，作为一个00后，博客这个概念在我很小的时候出现过，在未来的十几年里，我几乎再也没有见过这个概念了。 但我不知道的是，在我的互联网生涯中，我可能无意识的点进过无数次别人的博客里。"
 truncated: true
+collections:
+  - slug: "digital-life"
+    title: "数字生活"
+    collected_at: "2026-09-22T12:55:40.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 我的博客地址：luix.blog

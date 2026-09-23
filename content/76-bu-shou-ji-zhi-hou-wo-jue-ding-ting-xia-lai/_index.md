@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "76部手机之后，我决定停下来 据不完全统计，我使用过不下 76 部手机。 过去的几年里，我近乎发了疯地频繁换机，最夸张的时候，一年经手的手机超过 25 部。数据迁移成了家常便饭，我沉溺在体验新机的短暂快感中无法自拔。 转折发生在 2025 年。这一年，我换手机的频率呈现断崖式下降。上半年，我只坚守了一部手机。到了年底，我的主力设备固定为两部：iPhone 17 Pro Max 和红米 Turbo 4 Pro。 看着手里这两台设备，我心里有个声音越来越清晰：那种疯狂追逐新机的日子，大概永远结束了。 欲望的源头与代价"
 truncated: true
+collections:
+  - slug: "minimalism"
+    title: "极简主义"
+    collected_at: "2026-09-22T12:56:32.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 ## 76部手机之后，我决定停下来

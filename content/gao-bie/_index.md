@@ -14,6 +14,17 @@ featured_at: "2026-09-22T12:41:10.000Z"
 featured_post_ids:
   - "pst_01m34h83gzfzwbxbpgzjatjb8g"
 featured_sort_at: "2026-09-15T10:57:32.000Z"
+collections:
+  - slug: "life-health"
+    title: "生活与健康"
+    collected_at: "2026-09-22T12:54:51.000Z"
+    position: 0
+    pinned_at: null
+  - slug: "essays"
+    title: "随笔与思考"
+    collected_at: "2026-09-22T12:54:54.000Z"
+    position: 1
+    pinned_at: null
 ---
 
 # 再见

@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "“信息的丰富产生了注意力的贫乏。” —— 赫伯特·西蒙 (Herbert Simon) 我什么时候开始觉得自己的注意力涣散？就是我无聊的时候。 我总是觉得无聊，每当休息的时候，总是不知道自己在做些什么。 拿着手机，在抖音、B站和微信之间来回切换。指尖不停滑动，应用开开关关，时间就这样悄无声息地流逝了。"
 truncated: true
+collections:
+  - slug: "minimalism"
+    title: "极简主义"
+    collected_at: "2026-09-22T12:56:20.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 **“信息的丰富产生了注意力的贫乏。”**

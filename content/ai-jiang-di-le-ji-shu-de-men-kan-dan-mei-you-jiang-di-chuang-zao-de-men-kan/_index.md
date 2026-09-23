@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "AI降低了技术的门槛，但没有降低创造的门槛 关键词： Vibe Coding / 氛围编程技术门槛 / Technical Barrier创造力 / Creativity生产力解放 / Productivity LiberationAI工具 / AI Tools 大多数时间，我都在家里写作。但有时候我也想到不一样的地方写作。 例如今天，我就到了我家附近的图书馆，找了一个位置坐了下来。我发现我租房的位置简直太好了，一方面，我的小区外面就是地铁站，并且这条线平常通勤的人还不算多。"
 truncated: true
+collections:
+  - slug: "digital-life"
+    title: "数字生活"
+    collected_at: "2026-09-22T12:55:57.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 # AI降低了技术的门槛，但没有降低创造的门槛

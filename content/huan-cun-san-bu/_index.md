@@ -10,6 +10,17 @@ status: "published"
 visibility: "public"
 summary_text: "今天返乡了，现在回到了四川老家。 阔别接近四年，老家的一切都还没有变，只是路更烂了，从镇上到村里的公路对比上次回来肉眼可见的更烂了。 老家的田地还是那么粗旷，山坡上的树依旧在那里，每次春节回到老家，家门前的地里总会种满了油菜，而今天回来则是都开了一些花了。 环村散步是吃完晚饭之后的必要流程，把周边邻居都叫上，然后绕着附近的公路走一圈。 最近的天气真好，晚霞也很美，虽然多年过去老家的移动信号依旧很差，但起码空气还是一如既往的清新。"
 truncated: true
+collections:
+  - slug: "life-health"
+    title: "生活与健康"
+    collected_at: "2026-09-22T12:56:12.000Z"
+    position: 0
+    pinned_at: null
+  - slug: "essays"
+    title: "随笔与思考"
+    collected_at: "2026-09-22T12:56:13.000Z"
+    position: 1
+    pinned_at: null
 ---
 
 今天返乡了，现在回到了四川老家。

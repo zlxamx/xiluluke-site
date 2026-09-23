@@ -10,6 +10,17 @@ status: "published"
 visibility: "public"
 summary_text: "我站在购物橱窗前，里面的 MacBook 忽然对我说话了。 MacBook：你怎么了？ Me：我有些累。 MacBook：这种疲惫感，持续很久了吗？ Me：是啊，都已经习惯了。虽然偶尔会想为什么，但越想越烦躁，索性就不想了。"
 truncated: true
+collections:
+  - slug: "minimalism"
+    title: "极简主义"
+    collected_at: "2026-09-22T12:56:19.000Z"
+    position: 0
+    pinned_at: null
+  - slug: "digital-life"
+    title: "数字生活"
+    collected_at: "2026-09-22T12:56:19.000Z"
+    position: 1
+    pinned_at: null
 ---
 
 我站在购物橱窗前，里面的 MacBook 忽然对我说话了。

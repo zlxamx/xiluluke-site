@@ -10,6 +10,17 @@ status: "published"
 visibility: "public"
 summary_text: "“财富不在于拥有大笔财产，而在于拥有很少的需求。” —— 爱比克泰德 (Epictetus)"
 truncated: true
+collections:
+  - slug: "minimalism"
+    title: "极简主义"
+    collected_at: "2026-09-22T12:56:22.000Z"
+    position: 0
+    pinned_at: null
+  - slug: "digital-life"
+    title: "数字生活"
+    collected_at: "2026-09-22T12:56:23.000Z"
+    position: 1
+    pinned_at: null
 ---
 
 **“财富不在于拥有大笔财产，而在于拥有很少的需求。”**

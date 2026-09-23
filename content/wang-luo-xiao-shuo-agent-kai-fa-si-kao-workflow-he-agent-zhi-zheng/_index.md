@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "我在开发seedraft的时候，压根没想过这款产品到底是个什么样的产品。 最近几天我才发现，seedraft从一开始就是一款成熟的workflow软件，我和梁某银用它都有了一定的产出。 前不久，7月25号，我洗澡时灵机一动，想把seedraft改造成一款Agent软件。 那时候的我不知道什么是workflow，什么是Agent。 我之所以想这么做，是因为当前的软件设计太过死板，没有AI的感觉。"
 truncated: true
+collections:
+  - slug: "digital-life"
+    title: "数字生活"
+    collected_at: "2026-09-22T12:55:13.000Z"
+    position: 0
+    pinned_at: null
 media:
   - id: "med_01m34h6gtnfzwbxb6h7e64d3yv"
     kind: "image"

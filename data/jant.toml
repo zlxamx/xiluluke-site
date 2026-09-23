@@ -1,6 +1,6 @@
 format = "jant-site"
 version = 1
-generated_at = "2026-09-22T12:45:14.000Z"
+generated_at = "2026-09-23T00:58:51.000Z"
 site_name = "LuxiBlog"
 site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
 site_language = "zh-Hans"
@@ -102,54 +102,54 @@ type = "collection"
 sequence = "02"
 slug = "minimalism"
 title = "极简主义"
-entry_count = 66
+entry_count = 77
 recent_activity_label = "May 20"
-recent_activity_iso = "2026-05-20T00:00:00.000Z"
+recent_activity_iso = "2026-05-20T10:44:48.000Z"
 
 [[directory]]
 type = "collection"
 sequence = "03"
 slug = "essays"
 title = "随笔与思考"
-entry_count = 35
-recent_activity_label = "Jul 2"
-recent_activity_iso = "2026-07-02T13:41:14.000Z"
+entry_count = 58
+recent_activity_label = "2d ago"
+recent_activity_iso = "2026-09-20T11:55:13.000Z"
 
 [[directory]]
 type = "collection"
 sequence = "04"
 slug = "life-health"
 title = "生活与健康"
-entry_count = 25
-recent_activity_label = "May 26"
-recent_activity_iso = "2026-05-26T11:38:49.000Z"
+entry_count = 45
+recent_activity_label = "13h ago"
+recent_activity_iso = "2026-09-22T11:13:55.000Z"
 
 [[directory]]
 type = "collection"
 sequence = "05"
 slug = "film-tv"
 title = "影视"
-entry_count = 14
-recent_activity_label = "Jul 11"
-recent_activity_iso = "2026-07-11T08:29:33.000Z"
+entry_count = 20
+recent_activity_label = "1d ago"
+recent_activity_iso = "2026-09-21T11:50:51.000Z"
 
 [[directory]]
 type = "collection"
 sequence = "06"
 slug = "weekly"
 title = "周刊"
-entry_count = 18
-recent_activity_label = "Jul 20"
-recent_activity_iso = "2026-07-20T11:36:38.000Z"
+entry_count = 24
+recent_activity_label = "Aug 3"
+recent_activity_iso = "2026-08-03T08:48:42.000Z"
 
 [[directory]]
 type = "collection"
 sequence = "07"
 slug = "digital-life"
 title = "数字生活"
-entry_count = 12
-recent_activity_label = "Jun 15"
-recent_activity_iso = "2026-06-15T11:40:20.000Z"
+entry_count = 24
+recent_activity_label = "6d ago"
+recent_activity_iso = "2026-09-16T05:58:23.000Z"
 
 [[directory]]
 type = "collection"
@@ -157,6 +157,26 @@ sequence = "08"
 slug = "products"
 title = "产品"
 description_html = "<p>我用 vibe coding 做的小产品合集。</p>"
-entry_count = 2
+entry_count = 3
 recent_activity_label = "Jul 22"
-recent_activity_iso = "2026-07-22T12:01:29.000Z"
+recent_activity_iso = "2026-07-22T14:04:55.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "09"
+slug = "writing-and-creation"
+title = "写作与创作"
+description_html = "<p>小说写作、选题与个人表达。</p>"
+entry_count = 2
+recent_activity_label = "Sep 5"
+recent_activity_iso = "2026-09-05T05:40:04.000Z"
+
+[[directory]]
+type = "collection"
+sequence = "10"
+slug = "maoxuan-life-guide"
+title = "毛选生活指南"
+description_html = "<p>以《毛选》为线索的生活与实践思考。</p>"
+entry_count = 8
+recent_activity_label = "May 29"
+recent_activity_iso = "2026-05-29T10:35:29.000Z"

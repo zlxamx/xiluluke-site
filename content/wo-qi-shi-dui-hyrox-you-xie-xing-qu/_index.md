@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "今天朋友给我发来深圳hyrox比赛的现场视频，我想应该是因为我和她聊过我也有点想练hyrox的缘故。 hyrox是今年才进入我视野里的东西，我去我从来没有听说过这个词。 我初次了解到hyrox的时候，只是下意识觉得这一套训练很科学全面。 《超越百岁：长寿的科学与艺术》这本书里面提到过人体与长寿有关的各种指标，其中形成了一套非常紧密的理论，我叫它训练四大支柱。 Z2有氧累计VO2 max 最大摄氧量力量训练：深蹲、硬拉、负重行走等等稳定性与平衡力：大概就是核心稳定性、关节活动度"
 truncated: true
+collections:
+  - slug: "life-health"
+    title: "生活与健康"
+    collected_at: "2026-09-22T12:55:10.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 今天朋友给我发来深圳hyrox比赛的现场视频，我想应该是因为我和她聊过我也有点想练hyrox的缘故。

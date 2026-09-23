@@ -10,6 +10,12 @@ status: "published"
 visibility: "public"
 summary_text: "事情是这样的。 上周我去了一趟深圳，本来只是把深圳当做跳板，方便我去香港和澳门旅行，但最后总归我还是在深圳住了四个晚上。 时间不长，但足以在我心里产生印象。 如果我到深圳打工，那么这两件事应该是我首先学会的： 1、急刹车"
 truncated: true
+collections:
+  - slug: "essays"
+    title: "随笔与思考"
+    collected_at: "2026-09-22T12:54:47.000Z"
+    position: 0
+    pinned_at: null
 ---
 
 事情是这样的。
