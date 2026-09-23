@@ -1,6 +1,6 @@
 format = "jant-site"
 version = 1
-generated_at = "2026-09-23T01:04:11.000Z"
+generated_at = "2026-09-23T11:02:23.000Z"
 site_name = "LuxiBlog"
 site_description = "你好，这里是希路路克，一个辩证的极简主义者。"
 site_language = "zh-Hans"
@@ -120,9 +120,9 @@ type = "collection"
 sequence = "04"
 slug = "life-health"
 title = "生活与健康"
-entry_count = 45
-recent_activity_label = "13h ago"
-recent_activity_iso = "2026-09-22T11:13:55.000Z"
+entry_count = 46
+recent_activity_label = "1m ago"
+recent_activity_iso = "2026-09-23T11:02:22.000Z"
 
 [[directory]]
 type = "collection"
@@ -148,7 +148,7 @@ sequence = "07"
 slug = "digital-life"
 title = "数字生活"
 entry_count = 24
-recent_activity_label = "6d ago"
+recent_activity_label = "7d ago"
 recent_activity_iso = "2026-09-16T05:58:23.000Z"
 
 [[directory]]
